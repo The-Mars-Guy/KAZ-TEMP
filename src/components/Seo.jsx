@@ -8,7 +8,7 @@
 // in-app source of truth and the prerender script mirrors it.
 
 import { useEffect } from "react";
-import { SITE, resolveSeo, absoluteUrl } from "../config/site.js";
+import { SITE, resolveSeo, absoluteUrl, NOINDEX } from "../config/site.js";
 
 export { SITE };
 
@@ -74,7 +74,7 @@ export default function Seo({
     upsertMeta(
       "name",
       "robots",
-      noindex ? "noindex, follow" : "index, follow"
+      noindex || NOINDEX ? "noindex, nofollow" : "index, follow"
     );
     upsertMeta("property", "og:title", meta.fullTitle);
     upsertMeta("property", "og:description", meta.description);

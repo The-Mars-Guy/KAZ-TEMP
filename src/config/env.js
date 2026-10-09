@@ -27,12 +27,14 @@ function safe(getter, fallback = undefined) {
 const VITE_SITE_URL = safe(() => import.meta.env.VITE_SITE_URL);
 const VITE_CONTACT_ENDPOINT = safe(() => import.meta.env.VITE_CONTACT_ENDPOINT);
 const VITE_SHOW_DRAFTS = safe(() => import.meta.env.VITE_SHOW_DRAFTS);
+const VITE_NOINDEX = safe(() => import.meta.env.VITE_NOINDEX);
 const VITE_DEV = safe(() => import.meta.env.DEV, false);
 
 const SPEC = {
   VITE_SITE_URL: { vite: VITE_SITE_URL, node: "VITE_SITE_URL" },
   VITE_CONTACT_ENDPOINT: { vite: VITE_CONTACT_ENDPOINT, node: "VITE_CONTACT_ENDPOINT" },
   VITE_SHOW_DRAFTS: { vite: VITE_SHOW_DRAFTS, node: "VITE_SHOW_DRAFTS" },
+  VITE_NOINDEX: { vite: VITE_NOINDEX, node: "VITE_NOINDEX" },
 };
 
 /** Read a known variable from Vite's env or Node's process.env. */

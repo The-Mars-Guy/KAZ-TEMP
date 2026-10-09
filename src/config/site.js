@@ -6,12 +6,19 @@
 // This module is intentionally dependency-free and safe to import from both the
 // browser bundle AND the Node build script (see scripts/postbuild.mjs).
 
-import { envString } from "./env.js";
+import { envString, envBool } from "./env.js";
 
 const DEFAULT_URL = "https://frkazligeza.com";
 
 /** Canonical origin (env override, trailing slash stripped). */
 const siteUrl = (envString("VITE_SITE_URL") || DEFAULT_URL).replace(/\/+$/, "");
+
+/**
+ * When true, every page ships `noindex` and robots.txt disallows all crawling.
+ * Used for temporary/preview deployments (e.g. GitHub Pages) so they are not
+ * indexed. Production leaves this unset.
+ */
+export const NOINDEX = envBool("VITE_NOINDEX", false);
 
 export const SITE = {
   /** Primary public-facing identity. */

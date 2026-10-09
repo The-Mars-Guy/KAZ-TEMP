@@ -20,7 +20,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { SITE, resolveSeo, PAGE_META } from "../src/config/site.js";
+import { SITE, resolveSeo, PAGE_META, NOINDEX } from "../src/config/site.js";
 import { publishedBooks } from "../src/data/books.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -93,7 +93,7 @@ function injectMeta(html, { path: routePath, title, description, type, noindex =
   if (noindex) {
     out = out.replace(
       /<meta name="robots"[^>]*>/,
-      `<meta name="robots" content="noindex, follow" />`
+      `<meta name="robots" content="noindex, nofollow" />`
     );
   }
 
@@ -132,14 +132,23 @@ function main() {
   let written = 0;
 
   for (const route of routes) {
-    const html = injectMeta(shell, route);
+    const html = injectMeta(shell, { ...route, noindex: NOINDEX });
     const target = outFileFor(route.path);
     fs.mkdirSync(path.dirname(target), { recursive: true });
     fs.writeFileSync(target, html, "utf8");
     written += 1;
   }
 
-  fs.writeFileSync(path.join(DIST, "sitemap.xml"), buildSitemap(), "utf8");
+  if (NOINDEX) {
+    // Temporary/preview deployment: keep it out of every search engine.
+    fs.writeFileSync(
+      path.join(DIST, "robots.txt"),
+      "# Temporary preview — not for indexing.\nUser-agent: *\nDisallow: /\n",
+      "utf8"
+    );
+  } else {
+    fs.writeFileSync(path.join(DIST, "sitemap.xml"), buildSitemap(), "utf8");
+  }
 
   // SPA fallback for hosts that serve a 404 page (e.g. GitHub Pages): unknown
   // paths render the app, which then shows the in-app Not Found route.
@@ -152,7 +161,9 @@ function main() {
 
   const detailCount = routes.length - STATIC_ROUTES.length;
   console.log(
-    `[postbuild] prerendered ${written} routes (${detailCount} detail) + 404.html + sitemap.xml`
+    `[postbuild] prerendered ${written} routes (${detailCount} detail) + 404.html${
+      NOINDEX ? " [noindex]" : " + sitemap.xml"
+    }`
   );
 }
 

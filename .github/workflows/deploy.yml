@@ -40,6 +40,8 @@ jobs:
         env:
           # Project-site base path: https://the-mars-guy.github.io/KAZ-TEMP/
           VITE_BASE: /KAZ-TEMP/
+          # Temporary deployment — keep it out of search engines.
+          VITE_NOINDEX: "true"
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
