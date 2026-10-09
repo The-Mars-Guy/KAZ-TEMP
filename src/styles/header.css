@@ -1,0 +1,195 @@
+/* =============================================================
+   header.css — traditional horizontal nav + accessible mobile menu
+   ============================================================= */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: saturate(1.2) blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  min-height: 76px;
+}
+
+/* ---- Wordmark ---- */
+.site-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 1rem + 0.6vw, 1.45rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  text-decoration: none;
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.site-title__name {
+  display: block;
+}
+
+.site-title__meta {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-text);
+  margin-top: 2px;
+}
+
+/* ---- Desktop nav ---- */
+.site-nav {
+  display: none;
+}
+
+.site-nav__list {
+  display: flex;
+  align-items: center;
+  gap: clamp(var(--space-3), 1.4vw, var(--space-6));
+}
+
+.site-nav__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text);
+  padding-block: var(--space-3);
+  transition: color var(--transition);
+}
+
+.site-nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition);
+}
+
+.site-nav__link:hover {
+  color: var(--primary);
+}
+
+.site-nav__link:hover::after,
+.site-nav__link[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+.site-nav__link[aria-current="page"] {
+  color: var(--primary);
+}
+
+.site-nav__cta {
+  font-family: var(--font-sans);
+  font-size: var(--size-caption);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--surface);
+  background: var(--primary);
+  padding: var(--space-2) var(--space-5);
+  border-radius: var(--radius);
+  transition: background var(--transition);
+}
+
+.site-nav__cta:hover {
+  background: var(--primary-dark);
+}
+
+/* ---- Mobile menu button ---- */
+.menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  background: var(--surface);
+}
+
+.menu-toggle:hover {
+  border-color: var(--gold);
+  color: var(--primary);
+}
+
+.menu-toggle svg {
+  width: 26px;
+  height: 26px;
+}
+
+/* ---- Mobile panel ---- */
+.mobile-panel {
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+  padding-block: var(--space-4) var(--space-6);
+  animation: panel-in 180ms var(--ease);
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-nav__list {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.mobile-nav__link {
+  display: block;
+  padding: var(--space-4) var(--space-2);
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  text-decoration: none;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+}
+
+.mobile-nav__link[aria-current="page"] {
+  color: var(--primary);
+}
+
+.mobile-nav__cta {
+  margin-top: var(--space-5);
+  display: inline-block;
+}
+
+@media (min-width: 992px) {
+  .site-nav {
+    display: block;
+  }
+
+  .menu-toggle,
+  .mobile-panel {
+    display: none;
+  }
+}

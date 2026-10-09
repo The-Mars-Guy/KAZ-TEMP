@@ -1,0 +1,148 @@
+/* =============================================================
+   typography.css — headings, prose, links
+   ============================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.heading-1,
+.heading-2,
+.heading-3,
+.heading-4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: var(--line-height-heading);
+  color: var(--text);
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+h1,
+.heading-1 {
+  font-size: var(--size-h1);
+  letter-spacing: -0.02em;
+}
+
+h2,
+.heading-2 {
+  font-size: var(--size-h2);
+}
+
+h3,
+.heading-3 {
+  font-size: var(--size-h3);
+}
+
+h4,
+.heading-4 {
+  font-size: var(--size-h4);
+  font-weight: 500;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+strong,
+b {
+  font-weight: 600;
+}
+
+small,
+.caption {
+  font-size: var(--size-caption);
+  font-family: var(--font-sans);
+  color: var(--muted);
+}
+
+/* ---- Long-form prose (biography) ---- */
+.prose {
+  max-width: var(--content-width);
+  font-family: var(--font-body);
+  font-size: 1.1875rem;
+  line-height: 1.8;
+  color: var(--text);
+}
+
+.prose > * + * {
+  margin-top: var(--space-5);
+}
+
+.prose h2 {
+  font-size: var(--size-h3);
+  margin-top: var(--space-8);
+}
+
+.prose h3 {
+  font-size: var(--size-h4);
+  margin-top: var(--space-7);
+}
+
+.prose p {
+  margin-top: var(--space-5);
+}
+
+.prose ul,
+.prose ol {
+  padding-left: var(--space-6);
+  display: grid;
+  gap: var(--space-2);
+}
+
+.prose blockquote {
+  border-left: 3px solid var(--gold-light);
+  padding: var(--space-2) 0 var(--space-2) var(--space-6);
+  margin: var(--space-7) 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--primary);
+}
+
+.prose a {
+  color: var(--primary);
+  text-underline-offset: 3px;
+}
+
+.prose a:hover {
+  color: var(--gold);
+}
+
+/* ---- Inline links ---- */
+.link {
+  color: var(--primary);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color var(--transition);
+}
+
+.link:hover {
+  color: var(--gold);
+}
+
+.link--quiet {
+  text-decoration: none;
+  color: var(--muted);
+}
+
+.link--quiet:hover {
+  color: var(--primary);
+}
+
+/* ---- Headings with rules ---- */
+.rule-heading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.rule-heading::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}

@@ -1,0 +1,7 @@
+# robots.txt — Father Kaz Ligeza (https://frkazligeza.com)
+
+User-agent: *
+Allow: /
+Disallow: /404
+
+Sitemap: https://frkazligeza.com/sitemap.xml

@@ -1,0 +1,22 @@
+# Cloudflare Pages routing — Father Kaz Ligeza
+#
+# IMPORTANT: this file intentionally contains NO catch-all rewrite.
+#
+# Per Cloudflare's docs, `_redirects` rules are applied BEFORE static assets and
+# are "always followed, regardless of whether or not an asset matches the
+# incoming request". A catch-all like:
+#
+#     /*    /index.html   200
+#
+# would therefore OVERRIDE the per-route prerendered HTML files emitted by
+# scripts/postbuild.mjs (about.html, books/<slug>.html, ...), discarding their
+# route-specific <title>/meta/canonical and defeating the prerender.
+#
+# Because the project ships those static .html files and has no top-level
+# 404.html, Cloudflare Pages already:
+#   1. serves the matching static file for any real route, and
+#   2. falls back to the SPA shell (/index.html) for unmatched paths.
+#
+# So no rewrite is required here. Add only explicit, intentional rules below if
+# a future need arises (e.g. www -> apex is handled via a dashboard Redirect
+# Rule, not this file).

@@ -1,0 +1,136 @@
+/* =============================================================
+   pages.css — page-level compositions
+   ============================================================= */
+
+/* -------------------- Home -------------------- */
+.home-about__portrait {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  aspect-ratio: 4 / 5;
+}
+
+.home-about__portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bio-facts {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+  font-size: var(--size-small);
+}
+
+.bio-facts li {
+  display: flex;
+  gap: var(--space-3);
+  color: var(--muted);
+}
+
+.bio-facts li::before {
+  content: "✦";
+  color: var(--gold);
+  flex: none;
+  font-size: 0.75em;
+  margin-top: 0.35em;
+}
+
+/* -------------------- About -------------------- */
+.about-intro {
+  align-items: start;
+}
+
+.about-section {
+  border-top: 1px solid var(--border);
+  padding-block: var(--space-9);
+}
+
+.about-section__num {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--gold-text);
+  display: block;
+  margin-bottom: var(--space-3);
+}
+
+.about-section__grid {
+  display: grid;
+  gap: var(--space-8);
+}
+
+@media (min-width: 992px) {
+  .about-section__grid {
+    grid-template-columns: minmax(240px, 320px) 1fr;
+    gap: var(--space-10);
+  }
+}
+
+.about-section__aside {
+  position: sticky;
+  top: 110px;
+  align-self: start;
+}
+
+.about-section__aside img {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+}
+
+/* -------------------- Contact -------------------- */
+
+.contact-grid {
+  display: grid;
+  gap: var(--space-9);
+}
+
+@media (min-width: 992px) {
+  .contact-grid {
+    grid-template-columns: 1fr 340px;
+    gap: var(--space-10);
+    align-items: start;
+  }
+}
+
+.contact-aside {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+}
+
+.contact-aside h2 {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-4);
+}
+
+.contact-aside ul {
+  display: grid;
+  gap: var(--space-4);
+  font-size: var(--size-small);
+  color: var(--muted);
+}
+
+.contact-aside dl {
+  display: grid;
+  gap: var(--space-2);
+  font-size: var(--size-small);
+}
+
+/* -------------------- Not found -------------------- */
+.not-found {
+  text-align: center;
+  padding-block: var(--space-10);
+}
+
+.not-found__links {
+  margin-top: var(--space-8);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  justify-content: center;
+}
