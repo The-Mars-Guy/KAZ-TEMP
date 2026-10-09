@@ -5,7 +5,7 @@ import Seo from "../components/Seo.jsx";
 import SectionHeading from "../components/SectionHeading.jsx";
 import Button from "../components/Button.jsx";
 import BookCard from "../components/BookCard.jsx";
-import { SITE } from "../config/site.js";
+import { SITE, publicUrl } from "../config/site.js";
 import { featuredBooks } from "../data/books.js";
 
 const AREAS = [
@@ -62,7 +62,7 @@ export default function Home() {
           </div>
           <div className="hero__media">
             <div className="hero__portrait">
-              <img src="/images/fr-ligeza/father-kaz.jpg" alt="Father Kaz Ligeza" />
+              <img src={publicUrl("/images/fr-ligeza/father-kaz.jpg")} alt="Father Kaz Ligeza" />
             </div>
           </div>
         </div>
@@ -73,7 +73,7 @@ export default function Home() {
         <div className="container split split--media-first">
           <div className="home-about__portrait">
             <img
-              src="/images/fr-ligeza/father-kaz-portrait.jpg"
+              src={publicUrl("/images/fr-ligeza/father-kaz-portrait.jpg")}
               alt="Father Kaz Ligeza"
               loading="lazy"
             />
@@ -160,7 +160,7 @@ export default function Home() {
           <div className="service">
             <div className="service__media">
               <img
-                src="/images/fr-ligeza/ministering.svg"
+                src={publicUrl("/images/fr-ligeza/ministering.svg")}
                 alt="Illustration representing service and outreach (placeholder)"
                 loading="lazy"
               />

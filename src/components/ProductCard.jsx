@@ -5,12 +5,13 @@ import { Link } from "react-router-dom";
 import Price from "./Price.jsx";
 import Availability from "./Availability.jsx";
 import AddToCartPlaceholder from "./AddToCartPlaceholder.jsx";
+import { publicUrl } from "../config/site.js";
 
 export default function ProductCard({ product }) {
   return (
     <article className="card card--product">
       <div className="card__media">
-        <img src={product.image} alt={`${product.title} (placeholder image)`} loading="lazy" />
+        <img src={publicUrl(product.image)} alt={`${product.title} (placeholder image)`} loading="lazy" />
       </div>
       <div className="card__body">
         <span className="card__eyebrow">

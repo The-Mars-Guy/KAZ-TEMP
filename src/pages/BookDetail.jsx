@@ -10,7 +10,7 @@ import Price from "../components/Price.jsx";
 import Availability from "../components/Availability.jsx";
 import AddToCartPlaceholder from "../components/AddToCartPlaceholder.jsx";
 import Button from "../components/Button.jsx";
-import { absoluteUrl } from "../config/site.js";
+import { absoluteUrl, publicUrl } from "../config/site.js";
 import { getBookBySlug, getRelatedBooks } from "../data/books.js";
 
 export default function BookDetail() {
@@ -79,7 +79,7 @@ export default function BookDetail() {
         <div className="container">
           <div className="detail">
             <div className="detail__media">
-              <img src={book.image} alt={`Cover of ${book.title}`} />
+              <img src={publicUrl(book.image)} alt={`Cover of ${book.title}`} />
             </div>
 
             <div className="flow">

@@ -7,7 +7,7 @@ import PageHero from "../components/PageHero.jsx";
 import SectionHeading from "../components/SectionHeading.jsx";
 import Button from "../components/Button.jsx";
 import ImagePlaceholder from "../components/ImagePlaceholder.jsx";
-import { SITE } from "../config/site.js";
+import { SITE, publicUrl } from "../config/site.js";
 
 const SECTIONS = [
   {
@@ -132,7 +132,7 @@ export default function About() {
         <div className="container split split--media-first">
           <div className="home-about__portrait">
             <img
-              src="/images/fr-ligeza/father-kaz-portrait.jpg"
+              src={publicUrl("/images/fr-ligeza/father-kaz-portrait.jpg")}
               alt="Father Kaz Ligeza"
             />
           </div>

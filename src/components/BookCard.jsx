@@ -4,13 +4,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Price from "./Price.jsx";
 import Availability from "./Availability.jsx";
+import { publicUrl } from "../config/site.js";
 
 export default function BookCard({ book }) {
   return (
     <article className="card card--book">
       <div className="card__media">
         {/* Decorative cover; the title link below carries the accessible name. */}
-        <img src={book.image} alt={`Cover of ${book.title}`} loading="lazy" />
+        <img src={publicUrl(book.image)} alt={`Cover of ${book.title}`} loading="lazy" />
       </div>
       <div className="card__body">
         <span className="card__eyebrow">Book</span>

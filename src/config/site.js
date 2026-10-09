@@ -56,6 +56,24 @@ export function absoluteUrl(path = "/") {
   return `${SITE.url}${clean}`;
 }
 
+/**
+ * Prefix a public-asset path with the deployment base so files resolve both at
+ * a domain root ('/images/x.jpg') and under a GitHub Pages subpath
+ * ('/KAZ-TEMP/images/x.jpg'). Safe in Node (falls back to '/').
+ */
+export function publicUrl(path) {
+  if (!path) return path;
+  if (/^(https?:)?\/\//.test(path)) return path;
+  const base = (() => {
+    try {
+      return import.meta.env.BASE_URL || "/";
+    } catch {
+      return "/";
+    }
+  })();
+  return `${base.replace(/\/+$/, "")}/${String(path).replace(/^\/+/, "")}`;
+}
+
 /** Compose a full document title from a page title. */
 export function titleFor(title) {
   return title ? `${title} | ${SITE.publicName}` : `${SITE.publicName} | ${SITE.tagline}`;
