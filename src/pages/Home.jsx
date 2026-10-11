@@ -42,7 +42,6 @@ export default function Home() {
       <section className="hero">
         <div className="container hero__inner">
           <div>
-            <p className="hero__eyebrow">Welcome · Diocese of Tarnów, Poland</p>
             <h1 className="hero__title">Father Kaz Ligeza</h1>
             <p className="hero__subtitle">{SITE.formalName}</p>
             <p className="hero__tags">Priest · Author · Scholar</p>
@@ -85,20 +84,14 @@ export default function Home() {
               description="Service to the Church through liturgy, preaching, and teaching."
             />
             <p className="lead">
-              Father Kaz serves as a priest of the Diocese of Tarnów, Poland, with
-              pastoral ministry in the United States. His work centers on liturgy,
-              homiletics, the theology of liturgy, and Catholic social teaching, and
-              he is the author of books and publications.
+              Father Kazimierz Ligeza, Ph.D., is a priest of the Diocese of Tarnów,
+              Poland, and exercised his pastoral ministry in the United States from
+              2005, when he began as the associate pastor of a parish in Gainesville,
+              Florida, to 2018. Fr. Ligeza possesses an academic concentration in
+              liturgy, specializing in homiletics, theology of liturgy, and social
+              teaching of the Church. He has authored books and articles covering a
+              wide variety of topics in the Catholic Church.
             </p>
-            <ul className="bio-facts">
-              <li>Priest of the Diocese of Tarnów, Poland</li>
-              <li>Pastoral ministry in the United States</li>
-              <li>Academic background in liturgy</li>
-              <li>Specialization in homiletics</li>
-              <li>Theology of liturgy</li>
-              <li>Catholic social teaching</li>
-              <li>Author of books and publications</li>
-            </ul>
             <div className="btn-group">
               <Button to="/about" variant="primary">
                 Read Full Biography
@@ -168,9 +161,11 @@ export default function Home() {
             <div className="flow">
               <SectionHeading eyebrow="Charity" title="Service & Outreach" />
               <p>
-                For Father Kaz, service to those in need is an essential part of
-                Catholic life. He has worked alongside organizations dedicated to the
-                poor, including Cross Catholic Outreach — an external organization.
+                Father Kaz believes that helping the poorest of the poor is
+                identifying Jesus in them. Service to those in need is an essential
+                part of Catholic life, and he has worked alongside organizations
+                dedicated to the poor, including Cross Catholic Outreach — an
+                external organization.
               </p>
               <p className="service__note">
                 This personal website is not operated or officially endorsed by

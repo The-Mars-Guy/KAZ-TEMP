@@ -36,15 +36,10 @@ const SECTIONS = [
     body: (
       <>
         <p>
-          Since 2005, Father Kaz has also served in pastoral ministry in the United
-          States, accompanying parishes and communities through the sacraments,
-          preaching, and teaching.
-        </p>
-        <p>
-          <em>
-            Individual parishes and assignments are not listed here, as they have
-            not yet been verified for publication.
-          </em>
+          From 2005 to 2018, Father Kaz exercised his pastoral ministry in the
+          United States, beginning as the associate pastor of a parish in
+          Gainesville, Florida. He accompanied parishes and communities through the
+          sacraments, preaching, and teaching.
         </p>
       </>
     ),
@@ -93,9 +88,10 @@ const SECTIONS = [
     body: (
       <>
         <p>
-          Service to those in need is, for Father Kaz, an essential dimension of
-          Catholic life. He has worked with organizations dedicated to the poor and
-          to the promotion of human dignity and solidarity.
+          Father Kaz believes that helping the poorest of the poor is identifying
+          Jesus in them. Service to those in need is, for him, an essential dimension
+          of Catholic life, and he has worked with organizations dedicated to the
+          poor and to the promotion of human dignity and solidarity.
         </p>
         <p className="service__note">
           Father Kaz has worked with{" "}
@@ -138,17 +134,13 @@ export default function About() {
           </div>
           <div className="prose">
             <p className="lead">
-              {SITE.formalName} is a Roman Catholic priest of the Diocese of Tarnów,
-              Poland. A scholar and author, his work centers on liturgy, homiletics,
-              the theology of liturgy, and Catholic social teaching, alongside
-              pastoral ministry in Poland and the United States.
-            </p>
-            <p>
-              <em>
-                This biography uses clearly-labeled placeholders where details have
-                not yet been confirmed. Specific dates, institutions, and assignments
-                will be added when verified information is provided.
-              </em>
+              Father Kazimierz Ligeza, Ph.D., is a priest of the Diocese of Tarnów,
+              Poland, and exercised his pastoral ministry in the United States from
+              2005, when he began as the associate pastor of a parish in Gainesville,
+              Florida, to 2018. Fr. Ligeza possesses an academic concentration in
+              liturgy, specializing in homiletics, theology of liturgy, and social
+              teaching of the Church. He has authored books and articles covering a
+              wide variety of topics in the Catholic Church.
             </p>
           </div>
         </div>
@@ -175,7 +167,12 @@ export default function About() {
       {/* Ministry philosophy */}
       <section className="section section--surface">
         <div className="container">
-          <SectionHeading eyebrow="06" title="Personal Ministry Philosophy" center />
+          <SectionHeading
+            eyebrow="06"
+            title="Personal Ministry Philosophy"
+            description="Father Kaz is especially fond of a quote from St. Teresa of Calcutta."
+            center
+          />
           <figure className="quote">
             <div className="quote__mark" aria-hidden="true">❞</div>
             <blockquote className="quote__text">
