@@ -91,7 +91,7 @@ export default function BookDetail() {
               </div>
 
               <div className="prose">
-                <p>{book.longDescription}</p>
+                <p>{book.longDescription || book.description}</p>
               </div>
 
               <div className="detail__actions">
@@ -120,16 +120,16 @@ export default function BookDetail() {
                   <dd>{book.isbn || "To be supplied"}</dd>
                 </div>
                 <div className="detail__spec">
+                  <dt>Language</dt>
+                  <dd>{book.language || "To be supplied"}</dd>
+                </div>
+                <div className="detail__spec">
                   <dt>Availability</dt>
                   <dd>{book.available ? "Available" : "Coming soon"}</dd>
                 </div>
                 <div className="detail__spec">
                   <dt>Format</dt>
                   <dd>{book.shippingEligible ? "Print (ships)" : "Digital"}</dd>
-                </div>
-                <div className="detail__spec">
-                  <dt>SKU</dt>
-                  <dd>{book.sku || "To be supplied"}</dd>
                 </div>
               </dl>
             </div>

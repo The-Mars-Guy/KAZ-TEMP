@@ -14,7 +14,9 @@ export default function BookCard({ book }) {
         <img src={publicUrl(book.image)} alt={`Cover of ${book.title}`} loading="lazy" />
       </div>
       <div className="card__body">
-        <span className="card__eyebrow">Book</span>
+        <span className="card__eyebrow">
+          {book.language ? `Book · ${book.language}` : "Book"}
+        </span>
         <h3 className="card__title">
           <Link to={`/books/${book.slug}`}>{book.title}</Link>
         </h3>
