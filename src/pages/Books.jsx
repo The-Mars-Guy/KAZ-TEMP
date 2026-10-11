@@ -3,13 +3,20 @@
 import React from "react";
 import Seo from "../components/Seo.jsx";
 import PageHero from "../components/PageHero.jsx";
+import SectionHeading from "../components/SectionHeading.jsx";
 import BookCard from "../components/BookCard.jsx";
 import EmptyState from "../components/EmptyState.jsx";
 import Button from "../components/Button.jsx";
 import { publishedBooks } from "../data/books.js";
+import { languageGroup, LANGUAGE_GROUPS, LANGUAGE_GROUP_LABELS } from "../utils/language.js";
 
 export default function Books() {
-  const hasBooks = publishedBooks.length > 0;
+  // Group by language so Polish and English editions stay separate.
+  const groups = LANGUAGE_GROUPS.map((group) => ({
+    group,
+    label: LANGUAGE_GROUP_LABELS[group],
+    items: publishedBooks.filter((book) => languageGroup(book.language) === group),
+  })).filter((entry) => entry.items.length > 0);
 
   return (
     <>
@@ -18,18 +25,23 @@ export default function Books() {
       <PageHero
         eyebrow="Publications"
         title="Books & Publications"
-        subtitle="Books and publications by Father Kaz Ligeza."
+        subtitle="Books and publications by Father Kaz Ligeza, grouped by language."
         breadcrumbs={[{ to: "/", label: "Home" }, { label: "Books" }]}
       />
 
       <section className="section">
         <div className="container">
-          {hasBooks ? (
-            <div className="card-grid">
-              {publishedBooks.map((book) => (
-                <BookCard key={book.slug} book={book} />
-              ))}
-            </div>
+          {groups.length > 0 ? (
+            groups.map((entry) => (
+              <div className="book-group" key={entry.group}>
+                <SectionHeading as="h2" title={entry.label} />
+                <div className="card-grid">
+                  {entry.items.map((book) => (
+                    <BookCard key={book.slug} book={book} />
+                  ))}
+                </div>
+              </div>
+            ))
           ) : (
             <>
               <EmptyState title="Publications coming soon">

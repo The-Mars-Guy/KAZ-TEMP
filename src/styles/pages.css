@@ -17,6 +17,11 @@
   object-fit: cover;
 }
 
+/* Books page: separate language groups */
+.book-group + .book-group {
+  margin-top: var(--space-9);
+}
+
 /* -------------------- About -------------------- */
 .about-intro {
   align-items: start;

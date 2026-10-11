@@ -1,41 +1,42 @@
 // src/pages/Store.jsx
 //
 // Storefront, driven by the unified published product catalog
-// (src/data/catalog.js) so no product is duplicated across categories.
+// (src/data/catalog.js). Filters split by language so Polish and English
+// editions are never mixed.
 //
 // Cart, checkout, payment, shipping, and inventory are NOT implemented yet.
-// Checkout stays disabled until a secure payment backend exists.
 
 import React, { useMemo, useState } from "react";
 import Seo from "../components/Seo.jsx";
 import PageHero from "../components/PageHero.jsx";
 import ProductCard from "../components/ProductCard.jsx";
 import EmptyState from "../components/EmptyState.jsx";
-import { products, STORE_CATEGORIES, productCounts } from "../data/catalog.js";
+import { products } from "../data/catalog.js";
+import { ENGLISH, POLISH, OTHER } from "../utils/language.js";
 
-const PRESENT_CATEGORIES = STORE_CATEGORIES.filter((category) =>
-  products.some((product) => product.category === category)
-);
+const isBook = (p) => p.category === "Books";
 
+// Only filters that actually have products are shown.
 const FILTERS = [
-  { key: "All", label: "All" },
-  ...PRESENT_CATEGORIES.map((category) => ({ key: category, label: category })),
-];
+  { key: "All", label: "All", test: () => true },
+  { key: "English", label: "English books", test: (p) => isBook(p) && p.languageGroup === ENGLISH },
+  { key: "Polish", label: "Polish books", test: (p) => isBook(p) && p.languageGroup === POLISH },
+  { key: "other", label: "Other languages", test: (p) => isBook(p) && p.languageGroup === OTHER },
+  { key: "cds", label: "CDs", test: (p) => p.category === "CDs" },
+].filter((filter) => filter.key === "All" || products.some(filter.test));
 
 export default function Store() {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [active, setActive] = useState("All");
 
   const hasProducts = products.length > 0;
+  const activeFilter = FILTERS.find((filter) => filter.key === active) || FILTERS[0];
 
   const filtered = useMemo(
-    () =>
-      activeCategory === "All"
-        ? products
-        : products.filter((product) => product.category === activeCategory),
-    [activeCategory]
+    () => products.filter(activeFilter.test),
+    [activeFilter]
   );
 
-  const countFor = (key) => (key === "All" ? products.length : productCounts[key] || 0);
+  const countFor = (filter) => products.filter(filter.test).length;
 
   return (
     <>
@@ -44,7 +45,7 @@ export default function Store() {
       <PageHero
         eyebrow="Store"
         title="Store"
-        subtitle="Books, CDs, and publications."
+        subtitle="Books and recordings, grouped by language."
         breadcrumbs={[{ to: "/", label: "Home" }, { label: "Store" }]}
       />
 
@@ -64,12 +65,12 @@ export default function Store() {
                     key={filter.key}
                     type="button"
                     className="store-cat"
-                    aria-pressed={activeCategory === filter.key}
-                    onClick={() => setActiveCategory(filter.key)}
+                    aria-pressed={active === filter.key}
+                    onClick={() => setActive(filter.key)}
                   >
                     {filter.label}
                     <span className="store-cat__count" aria-hidden="true">
-                      {countFor(filter.key)}
+                      {countFor(filter)}
                     </span>
                   </button>
                 ))}

@@ -12,9 +12,10 @@
 
 import { publishedBooks } from "./books.js";
 import { publishedCds } from "./cds.js";
+import { languageGroup } from "../utils/language.js";
 
 /** Store category labels, in display order. */
-export const STORE_CATEGORIES = ["Books", "CDs", "Other Publications"];
+export const STORE_CATEGORIES = ["Books", "CDs"];
 
 /**
  * Availability logic. A product is presented as purchasable only when it is
@@ -41,6 +42,7 @@ function bookToProduct(book) {
     productType: isBook ? "book" : "publication",
     detailTo: `/books/${book.slug}`,
     language: book.language || "",
+    languageGroup: languageGroup(book.language),
     sku: book.sku || "",
     inventory: book.inventory ?? null,
     shippingEligible: Boolean(book.shippingEligible),
@@ -64,6 +66,7 @@ function cdToProduct(item) {
     productType: "cd",
     detailTo: null,
     language: item.language || "",
+    languageGroup: languageGroup(item.language),
     sku: item.sku || "",
     inventory: item.inventory ?? null,
     shippingEligible: Boolean(item.shippingEligible),

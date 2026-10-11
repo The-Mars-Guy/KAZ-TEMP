@@ -16,6 +16,7 @@ export default function ProductCard({ product }) {
       <div className="card__body">
         <span className="card__eyebrow">
           {product.category}
+          {product.language ? ` · ${product.language}` : ""}
           {product.format ? <span className="card__format"> · {product.format}</span> : null}
         </span>
         <h3 className="card__title">{product.title}</h3>

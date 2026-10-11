@@ -123,9 +123,24 @@ describe("unified product catalog", () => {
     expect(new Set(keys).size).toBe(keys.length);
   });
 
-  it("categories are Books, CDs and Other Publications only", () => {
-    expect(STORE_CATEGORIES).toEqual(["Books", "CDs", "Other Publications"]);
+  it("categories are Books and CDs only", () => {
+    expect(STORE_CATEGORIES).toEqual(["Books", "CDs"]);
     products.forEach((p) => expect(STORE_CATEGORIES).toContain(p.category));
+  });
+
+  it("every product carries a language group", () => {
+    products.forEach((p) => {
+      expect(["English", "Polish", "Other"]).toContain(p.languageGroup);
+    });
+  });
+
+  it("keeps English and Polish books in distinct groups", () => {
+    const english = products.filter((p) => p.category === "Books" && p.languageGroup === "English");
+    const polish = products.filter((p) => p.category === "Books" && p.languageGroup === "Polish");
+    expect(english.length).toBeGreaterThan(0);
+    expect(polish.length).toBeGreaterThan(0);
+    english.forEach((p) => expect(p.language).toBe("English"));
+    polish.forEach((p) => expect(p.language).toBe("Polish"));
   });
 
   it("excludes drafts in production mode", () => {
