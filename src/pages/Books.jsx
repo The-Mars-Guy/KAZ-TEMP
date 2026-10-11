@@ -11,11 +11,14 @@ import { publishedBooks } from "../data/books.js";
 import { languageGroup, LANGUAGE_GROUPS, LANGUAGE_GROUP_LABELS } from "../utils/language.js";
 
 export default function Books() {
-  // Group by language so Polish and English editions stay separate.
+  // His own books, grouped by language so Polish and English stay separate.
+  const ownBooks = publishedBooks.filter((book) => !book.recommended);
+  const recommended = publishedBooks.filter((book) => book.recommended);
+
   const groups = LANGUAGE_GROUPS.map((group) => ({
     group,
     label: LANGUAGE_GROUP_LABELS[group],
-    items: publishedBooks.filter((book) => languageGroup(book.language) === group),
+    items: ownBooks.filter((book) => languageGroup(book.language) === group),
   })).filter((entry) => entry.items.length > 0);
 
   return (
@@ -55,6 +58,21 @@ export default function Books() {
               </div>
             </>
           )}
+
+          {recommended.length > 0 ? (
+            <div className="book-group">
+              <SectionHeading
+                as="h2"
+                title="Recommended reading"
+                description="Books Father Kaz recommends, written by other authors."
+              />
+              <div className="card-grid">
+                {recommended.map((book) => (
+                  <BookCard key={book.slug} book={book} />
+                ))}
+              </div>
+            </div>
+          ) : null}
         </div>
       </section>
     </>

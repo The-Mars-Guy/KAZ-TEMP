@@ -112,8 +112,13 @@ describe("cds data", () => {
 });
 
 describe("unified product catalog", () => {
-  it("derives products from published books and CDs", () => {
-    expect(products.length).toBe(publishedBooks.length + publishedCds.length);
+  it("derives products from his published books and CDs", () => {
+    const ownBooks = publishedBooks.filter((b) => !b.recommended);
+    expect(products.length).toBe(ownBooks.length + publishedCds.length);
+  });
+
+  it("keeps recommended (other-author) books out of his store", () => {
+    products.forEach((p) => expect(p.recommended).not.toBe(true));
   });
 
   it("has one entry per product (no duplicates)", () => {

@@ -287,6 +287,59 @@ export const books = [
     isbn: "978-83-7720-935-6",
     image: "/images/books/reflexiones-sobre-el-amor-1394.jpg",
   }),
+
+  // --- Recommended reading (written by other authors, not by Father Kaz) ---
+  {
+    id: 1364,
+    slug: "archangels-near-us",
+    title: "Archangels Near Us",
+    subtitle: "The Seven Glorious Archangels and the Nine Choirs of Angels",
+    description:
+      "A Catholic prayer book on the Seven Glorious Archangels and the Nine Choirs of Angels, with reflections, prayers, and litanies.",
+    longDescription:
+      "A Catholic prayer book on the Seven Glorious Archangels and the Nine Choirs of Angels, with reflections, prayers, and litanies.",
+    price: 0,
+    image: "/images/books/archangels-near-us-1364.jpg",
+    featured: false,
+    available: true,
+    published: true,
+    year: "2026",
+    publisher: "Petrus",
+    isbn: "978-83-7720-916-5",
+    language: "English",
+    author: "Lidia Frydzińska-Świątczak",
+    recommended: true,
+    sku: "",
+    category: "Books",
+    inventory: null,
+    shippingEligible: true,
+  },
+  {
+    id: 1353,
+    slug: "saint-rita-in-moments-of-helplessness",
+    title: "Saint Rita in Moments of Helplessness",
+    subtitle: "",
+    description:
+      "A Catholic prayer book for people experiencing suffering, fear, illness, family crises, grief, and moments of doubt.",
+    longDescription:
+      "A Catholic prayer book for people experiencing suffering, fear, illness, family crises, grief, and moments of doubt — with prayers, novenas, litanies, and meditations.",
+    price: 0,
+    image: "/images/books/saint-rita-in-moments-of-helplessness-1353.jpg",
+    featured: false,
+    available: true,
+    published: true,
+    year: "2026",
+    publisher: "Petrus",
+    isbn: "978-83-7720-915-8",
+    language: "English",
+    author: "Violetta Bartela",
+    contribution: "Introduction by Fr. Kazimierz Ligeza, Ph.D.",
+    recommended: true,
+    sku: "",
+    category: "Books",
+    inventory: null,
+    shippingEligible: true,
+  },
 ];
 
 /** Publicly visible books (drafts filtered out in production). */

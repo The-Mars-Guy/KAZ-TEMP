@@ -180,6 +180,12 @@
   line-height: 1.65;
 }
 
+.card__author {
+  font-family: var(--font-sans);
+  font-size: var(--size-caption);
+  color: var(--text);
+}
+
 .card__footer {
   margin-top: auto;
   padding-top: var(--space-4);

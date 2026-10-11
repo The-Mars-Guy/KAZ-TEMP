@@ -53,7 +53,7 @@ export default function BookDetail() {
     "@context": "https://schema.org",
     "@type": "Book",
     name: book.title,
-    author: { "@type": "Person", name: "Rev. Kazimierz Ligeza, Ph.D." },
+    author: { "@type": "Person", name: book.author || "Rev. Kazimierz Ligeza, Ph.D." },
     description: book.description,
     image: absoluteUrl(book.image),
     ...(book.isbn ? { isbn: book.isbn } : {}),
@@ -83,7 +83,14 @@ export default function BookDetail() {
             </div>
 
             <div className="flow">
-              <p className="detail__byline">By Father Kaz Ligeza (Rev. Kazimierz Ligeza, Ph.D.)</p>
+              <p className="detail__byline">
+                {book.author
+                  ? `By ${book.author}`
+                  : "By Father Kaz Ligeza (Rev. Kazimierz Ligeza, Ph.D.)"}
+              </p>
+              {book.contribution ? (
+                <p className="detail__byline">{book.contribution}</p>
+              ) : null}
 
               <div className="detail__price-row">
                 <Price price={book.price} />
@@ -107,6 +114,18 @@ export default function BookDetail() {
               </div>
 
               <dl className="detail__specs">
+                {book.author ? (
+                  <div className="detail__spec">
+                    <dt>Author</dt>
+                    <dd>{book.author}</dd>
+                  </div>
+                ) : null}
+                {book.contribution ? (
+                  <div className="detail__spec">
+                    <dt>Contribution</dt>
+                    <dd>{book.contribution}</dd>
+                  </div>
+                ) : null}
                 <div className="detail__spec">
                   <dt>Publication Year</dt>
                   <dd>{book.year || "To be supplied"}</dd>

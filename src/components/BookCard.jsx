@@ -7,6 +7,9 @@ import Availability from "./Availability.jsx";
 import { publicUrl } from "../config/site.js";
 
 export default function BookCard({ book }) {
+  const kind = book.recommended ? "Recommended" : "Book";
+  const eyebrow = book.language ? `${kind} · ${book.language}` : kind;
+
   return (
     <article className="card card--book">
       <div className="card__media">
@@ -14,12 +17,11 @@ export default function BookCard({ book }) {
         <img src={publicUrl(book.image)} alt={`Cover of ${book.title}`} loading="lazy" />
       </div>
       <div className="card__body">
-        <span className="card__eyebrow">
-          {book.language ? `Book · ${book.language}` : "Book"}
-        </span>
+        <span className="card__eyebrow">{eyebrow}</span>
         <h3 className="card__title">
           <Link to={`/books/${book.slug}`}>{book.title}</Link>
         </h3>
+        {book.author ? <p className="card__author">By {book.author}</p> : null}
         {book.subtitle ? <p className="card__desc">{book.subtitle}</p> : null}
         <p className="card__desc">{book.description}</p>
         <div className="card__footer">

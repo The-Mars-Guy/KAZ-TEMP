@@ -77,7 +77,7 @@ function cdToProduct(item) {
 
 /** Full, de-duplicated, published-only product catalog. */
 export const products = [
-  ...publishedBooks.map(bookToProduct),
+  ...publishedBooks.filter((book) => !book.recommended).map(bookToProduct),
   ...publishedCds.map(cdToProduct),
 ];
 
