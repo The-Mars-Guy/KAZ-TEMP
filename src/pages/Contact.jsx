@@ -81,7 +81,7 @@ export default function Contact() {
       <PageHero
         eyebrow="Contact"
         title="Contact"
-        subtitle="For general inquiries, speaking invitations, book inquiries, and media requests."
+        subtitle="For general inquiries, speaking invitations, publication inquiries, and media requests."
         breadcrumbs={[{ to: "/", label: "Home" }, { label: "Contact" }]}
       />
 
@@ -236,8 +236,8 @@ export default function Contact() {
                 <dd>Choose “Speaking Invitation” in the subject field.</dd>
               </div>
               <div>
-                <dt>Book inquiries</dt>
-                <dd>Choose “Book Inquiry” in the subject field.</dd>
+                <dt>Publication inquiries</dt>
+                <dd>Choose “Publication Inquiry” in the subject field.</dd>
               </div>
               <div>
                 <dt>Media</dt>

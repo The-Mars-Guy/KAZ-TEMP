@@ -21,10 +21,10 @@ const siteUrl = (envString("VITE_SITE_URL") || DEFAULT_URL).replace(/\/+$/, "");
 export const NOINDEX = envBool("VITE_NOINDEX", false);
 
 export const SITE = {
-  /** Primary public-facing identity. */
-  publicName: "Father Kaz Ligeza",
+  /** Primary public-facing identity. Polish diacritics are preserved. */
+  publicName: "Father Kaz Ligęza",
   /** Secondary / formal identity, used in metadata and structured data. */
-  formalName: "Rev. Kazimierz Ligeza, Ph.D.",
+  formalName: "Rev. Kazimierz Ligęza, PhD",
   /** Short informal name. */
   shortName: "Father Kaz",
   /** Identity line used under the wordmark. */
@@ -36,8 +36,6 @@ export const SITE = {
   ogImage: "/images/social/og-image.jpg",
   /**
    * Verified public contact details. Empty until provided by Father Kaz.
-   * When `email` is set, the contact page offers it as an accessible fallback
-   * (and, if the form backend is unconfigured, as the primary alternative).
    * Do NOT invent an address here.
    */
   email: "",
@@ -47,13 +45,23 @@ export const SITE = {
    * no invented dates, institutions, awards, or positions.
    */
   description:
-    "Father Kaz Ligeza (Rev. Kazimierz Ligeza, Ph.D.) is a Roman Catholic priest of the Diocese of Tarnów, Poland — author, scholar, and homilist writing on liturgy, homiletics, the theology of liturgy, and Catholic social teaching.",
+    "Rev. Kazimierz Ligęza, PhD — Father Kaz — is a Roman Catholic priest of the Diocese of Tarnów, Poland, ordained in 1990. A homilist, author, and scholar, he has served parishes in the United States and writes on liturgy, homiletics, the theology of liturgy, and Catholic social teaching.",
   /** Topics for structured data (schema.org knowsAbout). */
   knowsAbout: [
     "Liturgy",
     "Homiletics",
     "Theology of Liturgy",
+    "Rhetoric",
+    "History of Preaching",
+    "Church and Media",
+    "Communication and Theology of Media",
     "Catholic Social Teaching",
+  ],
+  /** External, authoritative pages used for schema.org `sameAs`. */
+  sameAs: [
+    "https://crosscatholic.org/outreach-priest/ligeza/",
+    "https://wydawnictwopetrus.pl/autor,397,kazimierz-ligeza",
+    "https://orcid.org/0009-0007-8820-3687",
   ],
 };
 
@@ -83,7 +91,7 @@ export function publicUrl(path) {
 
 /** Compose a full document title from a page title. */
 export function titleFor(title) {
-  return title ? `${title} | ${SITE.publicName}` : `${SITE.publicName} | ${SITE.tagline}`;
+  return title ? `${title} | ${SITE.formalName}` : `${SITE.formalName} | ${SITE.tagline}`;
 }
 
 /**
@@ -96,24 +104,29 @@ export const PAGE_META = {
     description: SITE.description,
   },
   "/about": {
-    title: "About",
+    title: "About Father Kaz",
     description:
-      "Biography of Father Kaz Ligeza (Rev. Kazimierz Ligeza, Ph.D.) — Roman Catholic priest of the Diocese of Tarnów, Poland; author, scholar, and homilist.",
+      "The life and ministry of Rev. Kazimierz Ligęza, PhD — a Roman Catholic priest of the Diocese of Tarnów, Poland, ordained in 1990, who served parishes in the United States from 2005 to 2018.",
   },
-  "/books": {
-    title: "Books",
+  "/academic-work": {
+    title: "Academic Work",
     description:
-      "Books and publications by Father Kaz Ligeza (Rev. Kazimierz Ligeza, Ph.D.) — liturgy, homiletics, and Catholic social teaching.",
+      "The scholarship of Rev. Kazimierz Ligęza, PhD — Doctor of Theology in homiletics, with research in liturgy, rhetoric, the history of preaching, Church and media, and Catholic social teaching.",
+  },
+  "/ministry": {
+    title: "Ministry & Service",
+    description:
+      "The priestly ministry and charitable service of Rev. Kazimierz Ligęza, PhD — sacramental ministry, preaching, retreats, and service to the poor.",
+  },
+  "/publications": {
+    title: "Publications",
+    description:
+      "Books, prayer books, articles, and recordings by Rev. Kazimierz Ligęza, PhD, and works to which he has contributed — searchable and filterable by category, language, and year.",
   },
   "/contact": {
     title: "Contact",
     description:
-      "Contact Father Kaz Ligeza — general inquiries, speaking invitations, book and media inquiries.",
-  },
-  "/store": {
-    title: "Store",
-    description:
-      "Books, CDs, and publications by Father Kaz Ligeza.",
+      "Contact Rev. Kazimierz Ligęza, PhD — general inquiries, speaking invitations, book and media inquiries.",
   },
   "/404": {
     title: "Page Not Found",

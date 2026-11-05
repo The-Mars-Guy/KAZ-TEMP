@@ -3,37 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#651f28" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#6b1f2a" />
+    <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
 
-    <title>Father Kaz Ligeza | Priest, Author &amp; Scholar</title>
+    <title>Rev. Kazimierz Ligęza, PhD | Priest · Author · Scholar</title>
     <meta
       name="description"
-      content="Father Kaz Ligeza (Rev. Kazimierz Ligeza, Ph.D.) is a Roman Catholic priest of the Diocese of Tarnów, Poland — author, scholar, and homilist writing on liturgy, homiletics, the theology of liturgy, and Catholic social teaching."
+      content="Rev. Kazimierz Ligęza, PhD — Father Kaz — is a Roman Catholic priest of the Diocese of Tarnów, Poland, ordained in 1990. A homilist, author, and scholar, he has served parishes in the United States and writes on liturgy, homiletics, the theology of liturgy, and Catholic social teaching."
     />
-    <meta name="author" content="Rev. Kazimierz Ligeza, Ph.D." />
+    <meta name="author" content="Rev. Kazimierz Ligęza, PhD" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://frkazligeza.com/" />
     <link rel="sitemap" type="application/xml" href="%BASE_URL%sitemap.xml" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Father Kaz Ligeza" />
-    <meta property="og:title" content="Father Kaz Ligeza | Priest, Author &amp; Scholar" />
+    <meta property="og:site_name" content="Father Kaz Ligęza" />
+    <meta property="og:title" content="Rev. Kazimierz Ligęza, PhD | Priest · Author · Scholar" />
     <meta
       property="og:description"
-      content="Catholic priest, author, scholar, and homilist. Liturgy, homiletics, the theology of liturgy, and Catholic social teaching."
+      content="Catholic priest of the Diocese of Tarnów, Poland — author, scholar, and homilist. Liturgy, homiletics, the theology of liturgy, and Catholic social teaching."
     />
     <meta property="og:url" content="https://frkazligeza.com/" />
     <meta property="og:image" content="https://frkazligeza.com/images/social/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Father Kaz Ligeza | Priest, Author &amp; Scholar" />
+    <meta name="twitter:title" content="Rev. Kazimierz Ligęza, PhD | Priest · Author · Scholar" />
     <meta
       name="twitter:description"
-      content="Catholic priest, author, scholar, and homilist. Liturgy, homiletics, the theology of liturgy, and Catholic social teaching."
+      content="Catholic priest of the Diocese of Tarnów, Poland — author, scholar, and homilist."
     />
     <meta name="twitter:image" content="https://frkazligeza.com/images/social/og-image.jpg" />
 
@@ -51,23 +53,36 @@
         "@graph": [
           {
             "@type": "Person",
-            "name": "Rev. Kazimierz Ligeza, Ph.D.",
-            "alternateName": "Father Kaz Ligeza",
+            "@id": "https://frkazligeza.com/#person",
+            "name": "Rev. Kazimierz Ligęza, PhD",
+            "alternateName": "Father Kaz Ligęza",
             "jobTitle": "Roman Catholic Priest, Author, Scholar",
             "description": "Roman Catholic priest of the Diocese of Tarnów, Poland; author and scholar in liturgy, homiletics, and Catholic social teaching.",
             "url": "https://frkazligeza.com/",
+            "image": "https://frkazligeza.com/images/fr-ligeza/father-kaz-portrait-960.jpg",
             "knowsAbout": [
               "Liturgy",
               "Homiletics",
               "Theology of Liturgy",
+              "Rhetoric",
+              "History of Preaching",
+              "Church and Media",
+              "Communication and Theology of Media",
               "Catholic Social Teaching"
+            ],
+            "sameAs": [
+              "https://crosscatholic.org/outreach-priest/ligeza/",
+              "https://wydawnictwopetrus.pl/autor,397,kazimierz-ligeza",
+              "https://orcid.org/0009-0007-8820-3687"
             ]
           },
           {
             "@type": "WebSite",
-            "name": "Father Kaz Ligeza",
-            "alternateName": "Rev. Kazimierz Ligeza, Ph.D.",
-            "url": "https://frkazligeza.com/"
+            "@id": "https://frkazligeza.com/#website",
+            "name": "Father Kaz Ligęza",
+            "alternateName": "Rev. Kazimierz Ligęza, PhD",
+            "url": "https://frkazligeza.com/",
+            "publisher": { "@id": "https://frkazligeza.com/#person" }
           }
         ]
       }

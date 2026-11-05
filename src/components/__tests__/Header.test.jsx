@@ -12,21 +12,27 @@ function renderHeader(path = "/") {
 
 test("renders the wordmark with the primary and formal names", () => {
   renderHeader();
-  const brand = screen.getByRole("link", { name: /father kaz ligeza/i });
+  const brand = screen.getByRole("link", { name: /father kaz ligęza/i });
   expect(brand).toBeInTheDocument();
-  expect(brand).toHaveTextContent(/rev\. kazimierz ligeza, ph\.d\./i);
+  expect(brand).toHaveTextContent(/rev\. kazimierz ligęza, phd/i);
 });
 
-test("renders the primary navigation with all links", () => {
+test("renders the primary navigation with the consolidated destinations", () => {
   renderHeader();
   const nav = screen.getByRole("navigation", { name: /primary/i });
-  const labels = ["Home", "About", "Books", "Store", "Contact"];
+  const labels = [
+    "Home",
+    "About Father Kaz",
+    "Academic Work",
+    "Ministry & Service",
+    "Publications",
+  ];
   labels.forEach((label) => {
     expect(screen.getByRole("link", { name: label })).toBeInTheDocument();
-    expect(nav).toBeInTheDocument();
   });
-  // Removed sections must no longer be present.
-  ["Homilies", "Articles", "Audio", "Speaking"].forEach((label) => {
+  expect(nav).toBeInTheDocument();
+  // Removed / consolidated destinations must not appear.
+  ["Books", "Store"].forEach((label) => {
     expect(screen.queryByRole("link", { name: label })).toBeNull();
   });
 });

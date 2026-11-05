@@ -1,6 +1,6 @@
 // src/data/catalog.js
 //
-// Unified product catalog — the SINGLE source of truth for the store.
+// Unified product catalog — a retained e-commerce integration boundary.
 //
 // Each product appears exactly ONCE. Products are derived from the published
 // books module; drafts are excluded in production. No product is duplicated
@@ -14,7 +14,7 @@ import { publishedBooks } from "./books.js";
 import { publishedCds } from "./cds.js";
 import { languageGroup } from "../utils/language.js";
 
-/** Store category labels, in display order. */
+/** Product categories used by the future checkout integration. */
 export const STORE_CATEGORIES = ["Books", "CDs"];
 
 /**
@@ -40,7 +40,7 @@ function bookToProduct(book) {
     published: book.published === true,
     category: book.category || "Books",
     productType: isBook ? "book" : "publication",
-    detailTo: `/books/${book.slug}`,
+    detailTo: `/publications/${book.slug}`,
     language: book.language || "",
     languageGroup: languageGroup(book.language),
     sku: book.sku || "",

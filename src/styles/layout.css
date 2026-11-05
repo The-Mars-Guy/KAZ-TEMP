@@ -54,9 +54,23 @@
   border-block: 1px solid var(--border);
 }
 
+.section--cream {
+  background: var(--cream);
+  border-block: 1px solid var(--border);
+}
+
 .section--ink {
   background: var(--primary-dark);
   color: var(--bg);
+}
+
+.section--ink .eyebrow {
+  color: var(--gold-light);
+}
+
+.section--ink .lead,
+.section--ink .muted {
+  color: color-mix(in srgb, var(--bg) 78%, transparent);
 }
 
 .section--ink h1,
@@ -130,9 +144,18 @@
   order: -1;
 }
 
+/* Skip-link target: receive focus without a visible outline on the whole page. */
+#main-content:focus {
+  outline: none;
+}
+
 /* ---- Utility ---- */
 .stack-sm > * + * {
   margin-top: var(--space-3);
+}
+
+.stack-md > * + * {
+  margin-top: var(--space-5);
 }
 
 .stack-lg > * + * {

@@ -17,6 +17,15 @@ import {
   getProductBySlug,
   isPurchasable,
 } from "../catalog.js";
+import {
+  publications,
+  availableCategories,
+  availableLanguages,
+  featuredPublications,
+  getPublicationBySlug,
+  getRelatedPublications,
+  publicationCounts,
+} from "../publications.js";
 import { SHOW_DRAFTS } from "../../config/content.js";
 
 const expectUniqueSlugs = (items) => {
@@ -178,5 +187,75 @@ describe("unified product catalog", () => {
 
   it("lookup returns undefined for unknown slug", () => {
     expect(getProductBySlug("nonexistent")).toBeUndefined();
+  });
+});
+
+describe("normalized publications", () => {
+  it("has one record per published work and unique slugs", () => {
+    const slugs = publications.map((item) => item.slug);
+    expect(new Set(slugs).size).toBe(slugs.length);
+  });
+
+  it("carries the normalized fields needed by cards and filters", () => {
+    publications.forEach((item) => {
+      expect(typeof item.title).toBe("string");
+      expect(typeof item.category).toBe("string");
+      expect(typeof item.language).toBe("string");
+      expect(typeof item.authorLine).toBe("string");
+      expect(Array.isArray(item.authors)).toBe(true);
+      expect(Array.isArray(item.contributors)).toBe(true);
+      expect(typeof item.searchText).toBe("string");
+      expect(["English", "Polish", "Other"]).toContain(item.languageGroup);
+      if (item.image) expectImageExists(item.image);
+    });
+  });
+
+  it("only exposes categories that contain publications", () => {
+    expect(availableCategories.length).toBeGreaterThan(0);
+    availableCategories.forEach((category) => {
+      expect(publicationCounts[category]).toBeGreaterThan(0);
+    });
+    expect(availableCategories).toContain("Books");
+    expect(availableCategories).toContain("Prayer Books");
+    expect(availableCategories).toContain("Articles");
+    expect(availableCategories).toContain("Other");
+  });
+
+  it("lists languages actually present in the catalogue", () => {
+    expect(availableLanguages).toContain("English");
+    expect(availableLanguages).toContain("Polish");
+    availableLanguages.forEach((language) =>
+      expect(publications.some((item) => item.language === language)).toBe(true)
+    );
+  });
+
+  it("attributes Archangels Near Us to its cover author, not Father Kaz", () => {
+    const item = getPublicationBySlug("archangels-near-us");
+    expect(item).toBeDefined();
+    expect(item.authors).toEqual(["Lidia Frydzińska-Świątczak"]);
+    expect(item.authors).not.toContain("Rev. Kazimierz Ligęza, PhD");
+    expect(item.category).toBe("Prayer Books");
+  });
+
+  it("attributes Saint Rita to Paweł Piotrowski with Father Kaz's introduction", () => {
+    const item = getPublicationBySlug("saint-rita-in-moments-of-helplessness");
+    expect(item).toBeDefined();
+    expect(item.authors).toEqual(["Paweł Piotrowski"]);
+    expect(item.contributors).toEqual([
+      { name: "Rev. Kazimierz Ligęza, PhD", role: "Introduction" },
+    ]);
+    expect(item.subtitle).toBe("Prayer Book");
+    expect(item.category).toBe("Prayer Books");
+  });
+
+  it("returns featured publications and related items safely", () => {
+    expect(featuredPublications.length).toBeLessThanOrEqual(3);
+    const related = getRelatedPublications("archangels-near-us", 3);
+    expect(related.length).toBeLessThanOrEqual(3);
+    related.forEach((item) => expect(item.slug).not.toBe("archangels-near-us"));
+  });
+
+  it("returns undefined for an unknown publication slug", () => {
+    expect(getPublicationBySlug("nonexistent")).toBeUndefined();
   });
 });

@@ -10,9 +10,9 @@
 // 3. Writes dist/sitemap.xml from the same route list.
 //
 // PUBLISHING: detail routes and the sitemap are generated from PUBLISHED content
-// only (see src/data/books.js `publishedBooks` + src/config/content.js). Draft
-// fixtures are excluded unless VITE_SHOW_DRAFTS=true (staging preview). Draft
-// detail routes are never emitted, so they cannot be indexed.
+// only (see src/data/publications.js + src/config/content.js). Draft fixtures are
+// excluded unless VITE_SHOW_DRAFTS=true (staging preview). Draft detail routes
+// are never emitted, so they cannot be indexed.
 //
 // Run automatically by `npm run build`. No extra dependencies.
 
@@ -21,7 +21,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { SITE, resolveSeo, PAGE_META, NOINDEX } from "../src/config/site.js";
-import { publishedBooks } from "../src/data/books.js";
+import { publications } from "../src/data/publications.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -40,16 +40,30 @@ const STATIC_ROUTES = Object.keys(PAGE_META).filter((route) => route !== "/404")
 
 const routes = [
   ...STATIC_ROUTES.map((route) => ({ path: route })),
-  ...publishedBooks.map((b) => ({
-    path: `/books/${b.slug}`,
-    title: b.title,
-    description: b.description,
-    type: "book",
-  })),
+  ...publications
+    .filter((item) => item.detailPath)
+    .map((item) => ({
+      path: item.detailPath,
+      title: item.title,
+      description: item.description,
+      image: item.image || undefined,
+      type:
+        item.source === "books"
+          ? "book"
+          : item.source === "cds"
+            ? "music.album"
+            : "article",
+    })),
 ];
 
-function injectMeta(html, { path: routePath, title, description, type, noindex = false }) {
-  const meta = resolveSeo({ path: routePath, title, description, type: type || "website" });
+function injectMeta(html, { path: routePath, title, description, type, image, noindex = false }) {
+  const meta = resolveSeo({
+    path: routePath,
+    title,
+    description,
+    type: type || "website",
+    image,
+  });
 
   let out = html;
   out = out.replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(meta.fullTitle)}</title>`);
@@ -74,9 +88,21 @@ function injectMeta(html, { path: routePath, title, description, type, noindex =
     `<meta property="og:url" content="${esc(meta.url)}" />`
   );
   out = out.replace(
+    /<meta property="og:type"[^>]*>/,
+    `<meta property="og:type" content="${esc(meta.type)}" />`
+  );
+  out = out.replace(
     /<meta property="og:image"[^>]*>/,
     `<meta property="og:image" content="${esc(meta.image)}" />`
   );
+
+  // A publication cover is not a 1200×630 social card; drop the stale dimensions
+  // when a route supplies its own image.
+  if (image) {
+    out = out
+      .replace(/\s*<meta property="og:image:width"[^>]*>/g, "")
+      .replace(/\s*<meta property="og:image:height"[^>]*>/g, "");
+  }
   out = out.replace(
     /<meta name="twitter:title"[^>]*>/,
     `<meta name="twitter:title" content="${esc(meta.fullTitle)}" />`
@@ -102,7 +128,7 @@ function injectMeta(html, { path: routePath, title, description, type, noindex =
 }
 
 function outFileFor(routePath) {
-  // Emit sibling .html files (dist/about.html, dist/books/<slug>.html) rather
+  // Emit sibling .html files (dist/about.html, dist/publications/<slug>.html) rather
   // than directory index files. Cloudflare Pages serves `/about` from
   // `about.html` with NO trailing-slash redirect, so the served URL matches the
   // canonical (which has no trailing slash). Unknown paths fall back to the SPA

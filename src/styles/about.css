@@ -1,0 +1,123 @@
+/* =============================================================
+   about.css — editorial layout for About page
+   ============================================================= */
+
+/* Portrait treatment – similar to home-about portrait but larger */
+.about-portrait {
+  border-radius: 999px 999px var(--radius-lg) var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--gold) 45%, var(--border));
+  background: var(--primary-dark);
+  aspect-ratio: 2 / 3;
+  box-shadow: var(--shadow-md);
+}
+
+.about-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+}
+
+/* Figure with caption for photos */
+.image-figure {
+  margin: var(--space-8) 0;
+  text-align: center;
+}
+
+.image-figure img {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  margin-inline: auto;
+}
+
+.image-figure figcaption {
+  margin-top: var(--space-3);
+  font-size: var(--size-caption);
+  color: var(--muted);
+}
+
+/* Timeline */
+ol.timeline {
+  list-style: none;
+  position: relative;
+  padding-left: var(--space-8);
+  margin-top: var(--space-8);
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: var(--space-4);
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--gold);
+}
+
+.timeline li {
+  position: relative;
+  margin-bottom: var(--space-6);
+  padding-left: var(--space-2);
+}
+
+.timeline-event {
+  display: block;
+}
+
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--space-8) + var(--space-4) - 5px);
+  top: 0.2em;
+  width: 10px;
+  height: 10px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+
+.timeline-date {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--gold-text);
+  margin-right: var(--space-3);
+}
+
+@media (min-width: 768px) {
+  .timeline li {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: var(--space-4);
+  }
+
+  .timeline-date {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .timeline-date {
+    display: block;
+    margin: 0 0 var(--space-1);
+  }
+}
+
+.verification-note {
+  margin-top: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-left: 2px solid var(--gold-light);
+  background: color-mix(in srgb, var(--cream) 70%, var(--surface));
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* Ensure no horizontal overflow */
+.section {
+  overflow-x: hidden;
+}

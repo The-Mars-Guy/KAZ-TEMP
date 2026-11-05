@@ -20,3 +20,10 @@
 # So no rewrite is required here. Add only explicit, intentional rules below if
 # a future need arises (e.g. www -> apex is handled via a dashboard Redirect
 # Rule, not this file).
+
+# Legacy destinations: the standalone Books page and Store were consolidated
+# into Publications. Permanent redirects keep old links and search results alive.
+/books        /publications        301
+/books/*      /publications/:splat 301
+/store        /publications        301
+/store/*      /publications/:splat 301

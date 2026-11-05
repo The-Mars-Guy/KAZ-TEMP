@@ -1,4 +1,4 @@
-# robots.txt — Father Kaz Ligeza (https://frkazligeza.com)
+# robots.txt — Rev. Kazimierz Ligęza, PhD (https://frkazligeza.com)
 
 User-agent: *
 Allow: /

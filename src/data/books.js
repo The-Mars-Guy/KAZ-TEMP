@@ -1,6 +1,6 @@
 // src/data/books.js
 //
-// Books & publications by Fr. Kazimierz Ligeza, Ph.D.
+// Books & publications by Rev. Kazimierz Ligęza, PhD.
 //
 // Catalogue and cover images sourced from the publisher, Wydawnictwo Petrus
 // (https://www.wydawnictwopetrus.pl/autor,397,kazimierz-ligeza). Titles are the
@@ -35,6 +35,7 @@ function petrus({ id, slug, title, language, description, year, isbn, image, fea
     language,
     sku: "",
     category: "Books",
+    publicationType: "book",
     inventory: null,
     shippingEligible: true,
   };
@@ -295,11 +296,14 @@ export const books = [
     title: "Archangels Near Us",
     subtitle: "The Seven Glorious Archangels and the Nine Choirs of Angels",
     description:
-      "A Catholic prayer book on the Seven Glorious Archangels and the Nine Choirs of Angels, with reflections, prayers, and litanies.",
+      "A Catholic prayer book on the Seven Glorious Archangels and the Nine Choirs of Angels, with reflections, prayers, litanies, and meditations.",
     longDescription:
-      "A Catholic prayer book on the Seven Glorious Archangels and the Nine Choirs of Angels, with reflections, prayers, and litanies.",
+      "A Catholic prayer book on the Seven Glorious Archangels and the Nine Choirs of Angels. It gathers reflections rooted in Sacred Scripture, prayers, litanies, and meditations on the mission and spiritual meaning of the archangels and the angelic choirs.",
     price: 0,
     image: "/images/books/archangels-near-us-1364.jpg",
+    // The supplied back-cover photograph is not present in the project; the
+    // detail view therefore shows the verified front cover only.
+    backImage: "",
     featured: false,
     available: true,
     published: true,
@@ -309,6 +313,7 @@ export const books = [
     language: "English",
     author: "Lidia Frydzińska-Świątczak",
     recommended: true,
+    publicationType: "prayer-book",
     sku: "",
     category: "Books",
     inventory: null,
@@ -318,13 +323,16 @@ export const books = [
     id: 1353,
     slug: "saint-rita-in-moments-of-helplessness",
     title: "Saint Rita in Moments of Helplessness",
-    subtitle: "",
+    subtitle: "Prayer Book",
     description:
       "A Catholic prayer book for people experiencing suffering, fear, illness, family crises, grief, and moments of doubt.",
     longDescription:
-      "A Catholic prayer book for people experiencing suffering, fear, illness, family crises, grief, and moments of doubt — with prayers, novenas, litanies, and meditations.",
+      "A Catholic prayer book for people experiencing suffering, fear, illness, family crises, grief, and moments of doubt — with prayers, novenas, litanies, and meditations. Introduction by Rev. Kazimierz Ligęza, PhD.",
     price: 0,
     image: "/images/books/saint-rita-in-moments-of-helplessness-1353.jpg",
+    // The supplied back-cover photograph is not present in the project; the
+    // detail view therefore shows the verified front cover only.
+    backImage: "",
     featured: false,
     available: true,
     published: true,
@@ -332,9 +340,13 @@ export const books = [
     publisher: "Petrus",
     isbn: "978-83-7720-915-8",
     language: "English",
-    author: "Violetta Bartela",
-    contribution: "Introduction by Fr. Kazimierz Ligeza, Ph.D.",
+    author: "Paweł Piotrowski",
+    contribution: "Introduction by Rev. Kazimierz Ligęza, PhD",
+    contributors: [
+      { name: "Rev. Kazimierz Ligęza, PhD", role: "Introduction" },
+    ],
     recommended: true,
+    publicationType: "prayer-book",
     sku: "",
     category: "Books",
     inventory: null,

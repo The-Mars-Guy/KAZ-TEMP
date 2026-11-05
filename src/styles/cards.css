@@ -294,6 +294,76 @@
   padding: var(--space-4);
 }
 
+/* -------------------- Publication card -------------------- */
+.card--publication .card__media {
+  aspect-ratio: 2 / 3;
+  border-bottom: 1px solid var(--border);
+  background:
+    radial-gradient(90% 70% at 50% 10%, color-mix(in srgb, var(--gold) 9%, transparent), transparent 70%),
+    color-mix(in srgb, var(--cream) 55%, var(--surface));
+}
+
+.card--publication .card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: var(--space-5);
+}
+
+.card__subtitle {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-style: italic;
+  line-height: 1.35;
+  color: var(--primary);
+}
+
+.card__contributor {
+  font-family: var(--font-sans);
+  font-size: var(--size-caption);
+  color: var(--gold-text);
+}
+
+.publication-cover--text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: var(--space-6);
+  background:
+    linear-gradient(155deg, color-mix(in srgb, var(--primary-dark) 92%, black), var(--primary));
+  color: var(--bg);
+  text-align: center;
+}
+
+.publication-cover__journal {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+
+.publication-cover__title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
+.publication-cover__rule {
+  width: 44px;
+  height: 1px;
+  margin-inline: auto;
+  background: var(--gold-light);
+}
+
+.publication-cover__author {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: color-mix(in srgb, var(--bg) 82%, transparent);
+}
+
 /* -------------------- Product card -------------------- */
 .card--product .card__media {
   aspect-ratio: 4 / 3;

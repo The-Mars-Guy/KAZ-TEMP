@@ -1,5 +1,5 @@
 // src/components/Header.jsx
-// Primary identity "Father Kaz Ligeza" + formal name as secondary identifier.
+// Primary identity "Father Kaz Ligęza" + formal name as secondary identifier.
 // Traditional horizontal navigation on desktop, accessible hamburger on mobile.
 
 import React, { useEffect, useId, useState } from "react";
@@ -57,22 +57,27 @@ export default function Header() {
           </ul>
         </nav>
 
-        <button
-          type="button"
-          className="menu-toggle"
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          aria-controls={panelId}
-          onClick={() => setOpen((current) => !current)}
-        >
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            {open ? (
-              <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-            ) : (
-              <path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-            )}
-          </svg>
-        </button>
+        <div className="site-header__actions">
+          <Link to="/contact" className="site-header__contact">
+            Contact
+          </Link>
+          <button
+            type="button"
+            className="menu-toggle"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls={panelId}
+            onClick={() => setOpen((current) => !current)}
+          >
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              {open ? (
+                <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+              ) : (
+                <path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+              )}
+            </svg>
+          </button>
+        </div>
       </div>
 
       {open ? (
@@ -99,7 +104,7 @@ export default function Header() {
               className="btn btn--primary mobile-nav__cta"
               onClick={() => setOpen(false)}
             >
-              Get in Touch
+              Contact Father Kaz
             </Link>
           </div>
         </div>

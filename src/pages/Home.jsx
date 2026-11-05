@@ -4,188 +4,179 @@ import React from "react";
 import Seo from "../components/Seo.jsx";
 import SectionHeading from "../components/SectionHeading.jsx";
 import Button from "../components/Button.jsx";
-import BookCard from "../components/BookCard.jsx";
-import { SITE, publicUrl } from "../config/site.js";
-import { featuredBooks } from "../data/books.js";
+import PublicationCard from "../components/PublicationCard.jsx";
+import PolandUsHero from "../components/PolandUsHero.jsx";
+import { featuredPublications } from "../data/publications.js";
 
-const AREAS = [
+import "../styles/home.css";
+
+const CALLINGS = [
   {
     num: "01",
-    title: "Liturgy",
-    desc: "The theology and spiritual meaning of the Church's liturgical life.",
+    title: "Priest",
+    body:
+      "A priest of the Diocese of Tarnów, Poland, ordained in 1990 and shaped by sacramental ministry and pastoral care.",
+    to: "/ministry",
+    label: "Ministry & service",
   },
   {
     num: "02",
-    title: "Homiletics",
-    desc: "The theology, preparation, and proclamation of Catholic preaching.",
+    title: "Author",
+    body:
+      "Books, homilies, and articles on Catholic faith, liturgy, and the life of the Church.",
+    to: "/publications",
+    label: "Browse publications",
   },
   {
     num: "03",
-    title: "Theology of Liturgy",
-    desc: "Study of worship as an expression of the Church's faith and life.",
-  },
-  {
-    num: "04",
-    title: "Catholic Social Teaching",
-    desc: "The Church's teaching concerning human dignity, solidarity, charity, justice, and service to the poor.",
+    title: "Scholar",
+    body:
+      "A Doctor of Theology in homiletics, writing and teaching on liturgy, rhetoric, preaching, and Catholic social teaching.",
+    to: "/academic-work",
+    label: "Academic work",
   },
 ];
 
 export default function Home() {
-  const hasBooks = featuredBooks.length > 0;
-
   return (
     <>
       <Seo path="/" />
 
-      {/* HERO */}
-      <section className="hero">
-        <div className="container hero__inner">
-          <div>
-            <h1 className="hero__title">Father Kaz Ligeza</h1>
-            <p className="hero__subtitle">{SITE.formalName}</p>
-            <p className="hero__tags">Priest · Author · Scholar</p>
-            <p className="hero__intro">
-              Explore the writings and ministry of Father Kaz, a Catholic priest
-              dedicated to sharing the richness of faith through teaching,
-              preaching, and service.
-            </p>
-            <div className="hero__actions">
-              <Button to="/books" variant="primary" size="lg">
-                Explore Publications
-              </Button>
-              <Button to="/about" variant="secondary" size="lg">
-                About Father Kaz
-              </Button>
-            </div>
-          </div>
-          <div className="hero__media">
-            <div className="hero__portrait">
-              <img src={publicUrl("/images/fr-ligeza/father-kaz.jpg")} alt="Father Kaz Ligeza" />
-            </div>
-          </div>
-        </div>
-      </section>
+      <PolandUsHero />
 
-      {/* ABOUT PREVIEW */}
+      {/* About preview */}
       <section className="section">
-        <div className="container split split--media-first">
-          <div className="home-about__portrait">
-            <img
-              src={publicUrl("/images/fr-ligeza/father-kaz-portrait.jpg")}
-              alt="Father Kaz Ligeza"
-              loading="lazy"
-            />
-          </div>
-          <div className="flow">
+        <div className="container home-about">
+          <div className="home-about__text">
             <SectionHeading
-              eyebrow="About"
+              eyebrow="A life between two countries"
               title="A priest, author, and scholar"
-              description="Service to the Church through liturgy, preaching, and teaching."
+              description="Service to the Church through worship, preaching, teaching, and writing."
             />
-            <p className="lead">
-              Father Kazimierz Ligeza, Ph.D., is a priest of the Diocese of Tarnów,
-              Poland, and exercised his pastoral ministry in the United States from
-              2005, when he began as the associate pastor of a parish in Gainesville,
-              Florida, to 2018. Fr. Ligeza possesses an academic concentration in
-              liturgy, specializing in homiletics, theology of liturgy, and social
-              teaching of the Church. He has authored books and articles covering a
-              wide variety of topics in the Catholic Church.
-            </p>
+            <div className="prose">
+              <p>
+                Father Kazimierz Ligęza, PhD, is a priest of the Diocese of Tarnów,
+                Poland. He exercised his pastoral ministry in the United States from
+                2005 — when he began as the associate pastor of a parish in
+                Gainesville, Florida — to 2018.
+              </p>
+              <p>
+                His academic concentration is liturgy, specializing in homiletics,
+                the theology of liturgy, and the social teaching of the Church. He
+                has authored books and articles on a wide variety of topics in the
+                Catholic Church.
+              </p>
+            </div>
             <div className="btn-group">
               <Button to="/about" variant="primary">
-                Read Full Biography
+                Read the biography
+              </Button>
+              <Button to="/academic-work" variant="secondary">
+                Academic work
               </Button>
             </div>
           </div>
+
+          <aside className="home-about__panel" aria-label="Ministry at a glance">
+            <p className="home-about__panel-eyebrow">At a glance</p>
+            <dl className="home-about__facts">
+              <div>
+                <dt>Ordained</dt>
+                <dd>1990</dd>
+              </div>
+              <div>
+                <dt>Diocese</dt>
+                <dd>Tarnów, Poland</dd>
+              </div>
+              <div>
+                <dt>United States</dt>
+                <dd>2005–2018</dd>
+              </div>
+              <div>
+                <dt>Doctorate</dt>
+                <dd>Homiletics</dd>
+              </div>
+            </dl>
+            <p className="home-about__panel-note">
+              A ministry that joins Polish roots to a decade of pastoral service in
+              the United States.
+            </p>
+          </aside>
         </div>
       </section>
 
-      {/* FEATURED BOOKS */}
-      {hasBooks ? (
-        <section className="section section--surface">
-          <div className="container">
-            <SectionHeading
-              eyebrow="Books & Publications"
-              title="Featured Books"
-              description="A selection of Father Kaz's published work."
-            />
-            <div className="stack-lg">
-              <div className="card-grid">
-                {featuredBooks.map((book) => (
-                  <BookCard key={book.slug} book={book} />
-                ))}
-              </div>
-              <div className="btn-group">
-                <Button to="/books" variant="primary">
-                  View All Books
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
-      ) : null}
-
-      {/* AREAS OF STUDY */}
-      <section className="section">
+      {/* Three callings */}
+      <section className="section section--cream">
         <div className="container">
           <SectionHeading
-            eyebrow="Study"
-            title="Areas of Study"
-            description="Four fields that shape his scholarship and ministry."
+            eyebrow="Priest · Author · Scholar"
+            title="Three facets of one vocation"
+            description="A life ordered toward worship, writing, and the study of the Church's faith."
             center
           />
-          <div className="areas-grid">
-            {AREAS.map((area) => (
-              <article className="area-card" key={area.num}>
-                <span className="area-card__num">{area.num}</span>
-                <h3 className="area-card__title">{area.title}</h3>
-                <p className="area-card__desc">{area.desc}</p>
+          <div className="callings">
+            {CALLINGS.map((item) => (
+              <article className="calling" key={item.num}>
+                <span className="calling__num">{item.num}</span>
+                <h3 className="calling__title">{item.title}</h3>
+                <p className="calling__body">{item.body}</p>
+                <Button to={item.to} variant="ghost" size="sm">
+                  {item.label}
+                </Button>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* SERVICE & OUTREACH */}
-      <section className="section section--surface">
+      {/* Selected publications */}
+      <section className="section">
         <div className="container">
-          <div className="service">
-            <div className="service__media">
-              <img
-                src={publicUrl("/images/fr-ligeza/ministering.svg")}
-                alt="Illustration representing service and outreach (placeholder)"
-                loading="lazy"
-              />
-            </div>
-            <div className="flow">
-              <SectionHeading eyebrow="Charity" title="Service & Outreach" />
-              <p>
-                Father Kaz believes that helping the poorest of the poor is
-                identifying Jesus in them. Service to those in need is an essential
-                part of Catholic life, and he has worked alongside organizations
-                dedicated to the poor, including Cross Catholic Outreach — an
-                external organization.
-              </p>
-              <p className="service__note">
-                This personal website is not operated or officially endorsed by
-                Cross Catholic Outreach. The link below is provided for reference.
-              </p>
-              <div className="btn-group">
-                <Button href="https://www.crosscatholic.org/" variant="secondary">
-                  Cross Catholic Outreach
-                </Button>
-              </div>
-            </div>
+          <SectionHeading
+            eyebrow="Selected publications"
+            title="Featured works"
+            description="A small selection from the bibliography."
+          />
+          <div className="card-grid">
+            {featuredPublications.map((publication) => (
+              <PublicationCard key={publication.id} publication={publication} eager />
+            ))}
+          </div>
+          <div className="btn-group home-section-actions">
+            <Button to="/publications" variant="primary">
+              Browse all publications
+            </Button>
           </div>
         </div>
       </section>
 
-      {/* QUOTE */}
-      <section className="section">
-        <div className="container">
-          <figure className="quote">
-            <div className="quote__mark" aria-hidden="true">❞</div>
+      {/* Service & outreach */}
+      <section className="section section--ink">
+        <div className="container service-band">
+          <div>
+            <SectionHeading
+              eyebrow="Service"
+              title="Identifying Jesus in the poorest of the poor"
+              description="Service to those in need is an essential dimension of Catholic life."
+            />
+            <div className="prose">
+              <p>
+                Father Kaz has worked alongside organizations dedicated to the poor
+                and to the promotion of human dignity and solidarity, including
+                Cross Catholic Outreach.
+              </p>
+            </div>
+            <p className="service__note">
+              This personal website is not operated or officially endorsed by Cross
+              Catholic Outreach. The link is provided for reference only.
+            </p>
+            <div className="btn-group">
+              <Button to="/ministry" variant="gold">
+                Ministry &amp; service
+              </Button>
+            </div>
+          </div>
+          <figure className="service-band__quote">
             <blockquote className="quote__text">
               Do small things with great love.
             </blockquote>
@@ -194,20 +185,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Closing CTA */}
       <section className="section section--tight">
         <div className="container">
           <div className="cta-panel">
-            <h2>Books &amp; publications</h2>
+            <span className="eyebrow">Read · Reflect · Connect</span>
+            <h2>Explore Father Kaz's work</h2>
             <p className="lead">
-              Explore Father Kaz's published work, or get in touch with any
+              Browse the publications, read the biography, or get in touch with any
               questions.
             </p>
             <div className="btn-group">
-              <Button to="/books" variant="primary">
-                Explore Publications
+              <Button to="/publications" variant="primary" size="lg">
+                Publications
               </Button>
-              <Button to="/contact" variant="secondary">
+              <Button to="/contact" variant="secondary" size="lg">
                 Contact
               </Button>
             </div>

@@ -4,7 +4,7 @@
 export const CONTACT_SUBJECTS = [
   "General Inquiry",
   "Speaking Invitation",
-  "Book Inquiry",
+  "Publication Inquiry",
   "Media Inquiry",
   "Other",
 ];

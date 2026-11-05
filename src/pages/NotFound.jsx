@@ -6,9 +6,10 @@ import Seo from "../components/Seo.jsx";
 
 const LINKS = [
   { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
-  { to: "/books", label: "Books" },
-  { to: "/store", label: "Store" },
+  { to: "/about", label: "About Father Kaz" },
+  { to: "/academic-work", label: "Academic Work" },
+  { to: "/ministry", label: "Ministry & Service" },
+  { to: "/publications", label: "Publications" },
   { to: "/contact", label: "Contact" },
 ];
 

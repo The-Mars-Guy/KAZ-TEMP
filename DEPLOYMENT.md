@@ -4,7 +4,7 @@ The site is a static React + Vite SPA. `npm run build` produces a fully static
 `dist/` folder plus:
 
 - a prerendered **sibling `.html` file per route** (`dist/about.html`,
-  `dist/books/<slug>.html`, …) with route-specific `<title>`, meta, canonical,
+  `dist/publications/<slug>.html`, …) with route-specific `<title>`, meta, canonical,
   Open Graph, and JSON-LD baked into `<head>` — so crawlers and social scrapers
   see correct metadata without executing JS;
 - `sitemap.xml` (published routes only);
@@ -73,9 +73,9 @@ wrangler pages deploy dist --project-name frkazligeza
 ## 4. Direct-navigation / refresh
 
 The build emits a sibling `.html` per route (`about.html`,
-`books/<slug>.html`, …). Cloudflare Pages serves `/about` from `about.html`
+`publications/<slug>.html`, …). Cloudflare Pages serves `/about` from `about.html`
 with no trailing-slash redirect, and falls back to the SPA shell for unmatched
-paths — so deep links such as `/books/<slug>` work on refresh, with the correct
+paths — so deep links such as `/publications/<slug>` work on refresh, with the correct
 route-specific metadata in the served HTML.
 
 `public/_redirects` intentionally defines **no** catch-all (see the routing note
@@ -124,7 +124,7 @@ Cloudflare Worker environment — not in this repo and not in `VITE_` variables.
 ## 6. Post-deploy checklist
 
 - [ ] `https://frkazligeza.com/` loads over HTTPS.
-- [ ] Deep link refresh works (e.g. `/books/<slug>` for a published book).
+- [ ] Deep link refresh works (e.g. `/publications/<slug>` for a published book).
 - [ ] View-source `/about` shows a route-specific `<title>` and canonical (the
       prerendered `about.html` is served, not the generic SPA shell).
 - [ ] `https://frkazligeza.com/sitemap.xml` and `/robots.txt` respond.

@@ -1,6 +1,6 @@
 // src/data/cds.js
 //
-// Audio CDs by Fr. Kazimierz Ligeza.
+// Audio CDs by Rev. Kazimierz Ligęza, PhD.
 //
 // "Hallelujah: Golden Light of Resurrection" is Father Kaz's own recording.
 // "Pieśni Fatimskie" / "The Songs of Fatima" come from the publisher
@@ -19,7 +19,7 @@ export const cds = [
     id: 1,
     slug: "hallelujah-golden-light-of-resurrection",
     title: "Hallelujah: Golden Light of Resurrection",
-    description: "An audio recording by Father Kaz Ligeza.",
+    description: "An audio recording by Rev. Kazimierz Ligęza, PhD.",
     format: "CD",
     price: 0,
     image: "/images/cds/hallelujah-golden-light-of-resurrection.jpg",

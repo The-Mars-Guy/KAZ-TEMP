@@ -48,12 +48,15 @@ function personSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": `${SITE.url}/#person`,
     name: SITE.formalName,
     alternateName: SITE.publicName,
     jobTitle: "Roman Catholic Priest, Author, Scholar",
     description: SITE.description,
     url: SITE.url,
+    image: absoluteUrl("/images/fr-ligeza/father-kaz-portrait-960.jpg"),
     knowsAbout: SITE.knowsAbout,
+    sameAs: SITE.sameAs,
   };
 }
 
@@ -94,9 +97,11 @@ export default function Seo({
         personSchema(),
         {
           "@type": "WebSite",
+          "@id": `${SITE.url}/#website`,
           name: SITE.publicName,
           alternateName: SITE.formalName,
           url: SITE.url,
+          publisher: { "@id": `${SITE.url}/#person` },
         },
       ],
     });
