@@ -28,7 +28,9 @@ Use `--gold-text` (not `--gold`) for small uppercase text so it meets AA contras
 ## Typography
 - **Display**: Cormorant Garamond — headings, hero, pull-quotes.
 - **Body**: Source Serif 4 — long-form prose, descriptions.
-- **Interface**: Inter — nav, labels, buttons, eyebrows, metadata.
+- **Interface**: Libre Franklin — nav, labels, buttons, eyebrows, metadata. The
+  American editorial grotesque pairs with the European serif reading voice and
+  echoes the site's Poland–United States subject.
 
 Scale tokens: `--size-h1..h4`, `--size-body`, `--size-lead`, `--size-small`,
 `--size-caption`. Line-height 1.7 body / 1.15 headings.
@@ -59,9 +61,15 @@ countries and the portrait. The handwritten sketch is a design reference only
 and never appears on the site.
 
 ## Motion / interaction
-- Transition 200ms ease-out; restrained hover lift/scale.
+- Tokens: `--duration-fast: 150ms`, `--duration-base: 200ms`,
+  `--duration-slow: 260ms`; `--ease-out` for entrances, `--ease-in-out` for moves.
+- Buttons use `scale(0.98)` press feedback; no hover zoom on card images.
+  Card hover is limited to border/shadow.
+- Mobile menu enters over 200ms from the top; form status and empty states use a
+  150ms fade/4px rise.
+- Exits are not animated; conditional content is removed immediately.
 - `prefers-reduced-motion` disables motion globally.
-- No heavy animation, parallax, or autoplay.
+- No heavy animation, parallax, autoplay, or spring/bounce in routine UI.
 
 ## Accessibility
 - `:focus-visible` 3px `--primary` outline, 3px offset.

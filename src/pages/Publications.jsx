@@ -80,8 +80,6 @@ export default function Publications() {
     return list;
   }, [q, category, language, sort]);
 
-  const anyActive = q || category || language || sort !== "title-asc";
-
   return (
     <>
       <Seo path="/publications" />
@@ -98,7 +96,12 @@ export default function Publications() {
           <p className="content-note">
             Titles written by other authors are listed with their authors; Father Kaz's contribution is noted separately.
           </p>
-          <div className="filter-bar" role="region" aria-label="Publication filters">
+          <div
+            id="publication-filters"
+            className="filter-bar"
+            role="region"
+            aria-label="Publication filters"
+          >
             <div className="filter-item">
               <label htmlFor="search" className="filter-label">
                 Search publications
@@ -168,11 +171,9 @@ export default function Publications() {
                 <option value="oldest">Oldest First</option>
               </select>
             </div>
-            {anyActive && (
-              <Button onClick={resetFilters} variant="secondary" size="sm">
-                Reset filters
-              </Button>
-            )}
+            <Button onClick={resetFilters} variant="secondary" size="sm">
+              Reset filters
+            </Button>
           </div>
           <p className="filters__count" aria-live="polite">
             {filtered.length} {filtered.length === 1 ? "publication" : "publications"}
@@ -188,6 +189,13 @@ export default function Publications() {
               Try a different search, or use the Reset filters control above.
             </EmptyState>
           )}
+          {filtered.length > 0 ? (
+            <p className="publications-backlink">
+              <a className="link link--quiet" href="#publication-filters">
+                Back to filters
+              </a>
+            </p>
+          ) : null}
         </div>
       </section>
     </>

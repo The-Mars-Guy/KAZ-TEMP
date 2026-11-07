@@ -171,7 +171,12 @@ export default function PublicationDetail() {
               </div>
               <div className="detail__actions">
                 {pub.externalUrl ? (
-                  <Button href={pub.externalUrl} variant="primary" size="sm">
+                  <Button
+                    href={pub.externalUrl}
+                    variant="primary"
+                    size="sm"
+                    aria-label={`Read article: ${pub.title} (opens in a new tab)`}
+                  >
                     Read article
                   </Button>
                 ) : (

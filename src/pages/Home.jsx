@@ -12,7 +12,6 @@ import "../styles/home.css";
 
 const CALLINGS = [
   {
-    num: "01",
     title: "Priest",
     body:
       "A priest of the Diocese of Tarnów, Poland, ordained in 1990 and shaped by sacramental ministry and pastoral care.",
@@ -20,7 +19,6 @@ const CALLINGS = [
     label: "Ministry & service",
   },
   {
-    num: "02",
     title: "Author",
     body:
       "Books, homilies, and articles on Catholic faith, liturgy, and the life of the Church.",
@@ -28,7 +26,6 @@ const CALLINGS = [
     label: "Browse publications",
   },
   {
-    num: "03",
     title: "Scholar",
     body:
       "A Doctor of Theology in homiletics, writing and teaching on liturgy, rhetoric, preaching, and Catholic social teaching.",
@@ -109,15 +106,13 @@ export default function Home() {
       <section className="section section--cream">
         <div className="container">
           <SectionHeading
-            eyebrow="Priest · Author · Scholar"
             title="Three facets of one vocation"
             description="A life ordered toward worship, writing, and the study of the Church's faith."
             center
           />
           <div className="callings">
             {CALLINGS.map((item) => (
-              <article className="calling" key={item.num}>
-                <span className="calling__num">{item.num}</span>
+              <article className="calling" key={item.title}>
                 <h3 className="calling__title">{item.title}</h3>
                 <p className="calling__body">{item.body}</p>
                 <Button to={item.to} variant="ghost" size="sm">
@@ -133,7 +128,6 @@ export default function Home() {
       <section className="section">
         <div className="container">
           <SectionHeading
-            eyebrow="Selected publications"
             title="Featured works"
             description="A small selection from the bibliography."
           />
@@ -155,7 +149,6 @@ export default function Home() {
         <div className="container service-band">
           <div>
             <SectionHeading
-              eyebrow="Service"
               title="Identifying Jesus in the poorest of the poor"
               description="Service to those in need is an essential dimension of Catholic life."
             />
@@ -189,7 +182,6 @@ export default function Home() {
       <section className="section section--tight">
         <div className="container">
           <div className="cta-panel">
-            <span className="eyebrow">Read · Reflect · Connect</span>
             <h2>Explore Father Kaz's work</h2>
             <p className="lead">
               Browse the publications, read the biography, or get in touch with any

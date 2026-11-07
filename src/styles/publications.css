@@ -16,10 +16,9 @@
 
 .filter-label {
   font-family: var(--font-sans);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
   color: var(--muted);
 }
 
@@ -34,6 +33,7 @@
   background: var(--surface);
   font: inherit;
   color: var(--text);
+  transition: border-color var(--transition), box-shadow var(--transition);
 }
 
 .filter-item input:focus,
@@ -61,6 +61,13 @@
   display: grid;
   gap: var(--space-6);
   grid-template-columns: 1fr;
+}
+
+.publications-backlink {
+  margin-top: var(--space-8);
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: var(--size-small);
 }
 
 @media (min-width: 768px) {

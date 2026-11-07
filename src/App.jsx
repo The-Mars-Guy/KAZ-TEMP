@@ -1,30 +1,19 @@
 // src/App.jsx
-// Routes are code-split with React.lazy so the initial bundle stays small;
-// each page (and its data) loads on demand.
+// The site is small enough to ship one page bundle: this avoids a route-level
+// loading fallback and the layout shift it caused on first paint.
 
-import React, { Suspense, lazy } from "react";
+import React from "react";
 import { Routes, Route, Navigate, useParams } from "react-router-dom";
 import Layout from "./components/Layout.jsx";
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
-
-const Home = lazy(() => import("./pages/Home.jsx"));
-const About = lazy(() => import("./pages/About.jsx"));
-const AcademicWork = lazy(() => import("./pages/AcademicWork.jsx"));
-const Ministry = lazy(() => import("./pages/Ministry.jsx"));
-const Publications = lazy(() => import("./pages/Publications.jsx"));
-const PublicationDetail = lazy(() => import("./pages/PublicationDetail.jsx"));
-const Contact = lazy(() => import("./pages/Contact.jsx"));
-const NotFound = lazy(() => import("./pages/NotFound.jsx"));
-
-function RouteFallback() {
-  return (
-    <div className="container" style={{ paddingBlock: "var(--space-10)" }}>
-      <p className="field__hint" role="status">
-        Loading…
-      </p>
-    </div>
-  );
-}
+import Home from "./pages/Home.jsx";
+import About from "./pages/About.jsx";
+import AcademicWork from "./pages/AcademicWork.jsx";
+import Ministry from "./pages/Ministry.jsx";
+import Publications from "./pages/Publications.jsx";
+import PublicationDetail from "./pages/PublicationDetail.jsx";
+import Contact from "./pages/Contact.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 /** Compatibility redirect: the old standalone Books page. */
 function BooksRedirect() {
@@ -46,25 +35,23 @@ export default function App() {
   return (
     <Layout>
       <ErrorBoundary>
-        <Suspense fallback={<RouteFallback />}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/academic-work" element={<AcademicWork />} />
-            <Route path="/ministry" element={<Ministry />} />
-            <Route path="/publications" element={<Publications />} />
-            <Route path="/publications/:slug" element={<PublicationDetail />} />
-            <Route path="/contact" element={<Contact />} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/academic-work" element={<AcademicWork />} />
+          <Route path="/ministry" element={<Ministry />} />
+          <Route path="/publications" element={<Publications />} />
+          <Route path="/publications/:slug" element={<PublicationDetail />} />
+          <Route path="/contact" element={<Contact />} />
 
-            {/* Legacy destinations — keep old links working. */}
-            <Route path="/books" element={<BooksRedirect />} />
-            <Route path="/books/:slug" element={<BookDetailRedirect />} />
-            <Route path="/store" element={<StoreRedirect />} />
-            <Route path="/store/:slug" element={<BookDetailRedirect />} />
+          {/* Legacy destinations — keep old links working. */}
+          <Route path="/books" element={<BooksRedirect />} />
+          <Route path="/books/:slug" element={<BookDetailRedirect />} />
+          <Route path="/store" element={<StoreRedirect />} />
+          <Route path="/store/:slug" element={<BookDetailRedirect />} />
 
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </ErrorBoundary>
     </Layout>
   );

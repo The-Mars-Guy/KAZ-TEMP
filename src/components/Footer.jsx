@@ -38,7 +38,12 @@ export default function Footer() {
             <ul className="site-footer__list">
               {EXTERNAL_LINKS.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} target="_blank" rel="noopener noreferrer">
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${link.label} (opens in a new tab)`}
+                  >
                     {link.label}
                   </a>
                 </li>

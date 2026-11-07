@@ -85,6 +85,7 @@ ol.timeline {
   font-weight: 600;
   letter-spacing: 0.04em;
   color: var(--gold-text);
+  font-variant-numeric: tabular-nums;
   margin-right: var(--space-3);
 }
 

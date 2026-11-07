@@ -106,7 +106,7 @@ a {
   /* Type families */
   --font-display: "Cormorant Garamond", "Iowan Old Style", Georgia, "Times New Roman", serif;
   --font-body: "Source Serif 4", "Iowan Old Style", Georgia, "Times New Roman", serif;
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-sans: "Libre Franklin", "Franklin Gothic Medium", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
   /* Type scale (fluid where useful) */
   --size-h1: clamp(2.4rem, 1.6rem + 3.2vw, 3.75rem);
@@ -146,9 +146,14 @@ a {
   --bp-992: 992px;
   --bp-1200: 1200px;
 
-  /* Motion */
-  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
-  --transition: 200ms var(--ease);
+  /* Motion — entrances use ease-out, moves use ease-in-out */
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 260ms;
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease: var(--ease-out);
+  --transition: var(--duration-base) var(--ease-out);
 
   /* Depth — restrained */
   --shadow-sm: 0 1px 2px rgba(37, 34, 30, 0.05);
@@ -161,6 +166,12 @@ a {
   outline: 3px solid var(--primary);
   outline-offset: 3px;
   border-radius: 2px;
+}
+
+/* Burgundy is too close to the ink/footer backgrounds; use light gold there. */
+.section--ink :focus-visible,
+.site-footer :focus-visible {
+  outline-color: var(--gold-light);
 }
 
 /* ---- 4. Selection ---- */
@@ -225,8 +236,7 @@ a {
   font-family: var(--font-sans);
   font-size: var(--size-caption);
   font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  letter-spacing: 0.06em;
   color: var(--gold-text);
 }
 

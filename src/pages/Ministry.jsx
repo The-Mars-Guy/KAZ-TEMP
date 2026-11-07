@@ -80,6 +80,7 @@ export default function Ministry() {
                 href="https://www.crosscatholic.org/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Cross Catholic Outreach (opens in a new tab)"
               >
                 Cross Catholic Outreach
               </a>

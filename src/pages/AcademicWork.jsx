@@ -115,7 +115,13 @@ export default function AcademicWork() {
                 {art.title}
                 {art.subtitle ? ` (${art.subtitle})` : ""} — {art.publisher}, {art.year}. {art.language && <span>{art.language}. </span>}
                 {art.externalUrl && (
-                  <a href={art.externalUrl} target="_blank" rel="noopener noreferrer" className="link">
+                  <a
+                    href={art.externalUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link"
+                    aria-label={`Read ${art.title} (opens in a new tab)`}
+                  >
                     DOI/Link
                   </a>
                 )}
