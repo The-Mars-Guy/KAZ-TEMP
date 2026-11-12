@@ -46,7 +46,8 @@
 }
 
 /* Timeline */
-ol.timeline {
+/* Higher specificity than the global `ol[class] { padding: 0 }` reset. */
+main ol.timeline {
   list-style: none;
   position: relative;
   padding-left: var(--space-8);
