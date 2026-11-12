@@ -1,5 +1,5 @@
 /* =============================================================
-   cards.css — buttons, cards, hero, quote, areas, forms, filters,
+   cards.css — buttons, cards, quote, areas, forms, filters,
    detail layouts, empty states
    ============================================================= */
 
@@ -370,112 +370,6 @@
 .card--product .card__media img {
   object-fit: contain;
   padding: var(--space-4);
-}
-
-/* -------------------- Hero -------------------- */
-.hero {
-  position: relative;
-  background:
-    radial-gradient(120% 90% at 85% 0%, color-mix(in srgb, var(--gold) 12%, transparent) 0%, transparent 55%),
-    linear-gradient(180deg, var(--surface), var(--bg));
-  border-bottom: 1px solid var(--border);
-  overflow: hidden;
-}
-
-.hero__inner {
-  display: grid;
-  gap: var(--space-8);
-  align-items: center;
-  padding-block: var(--space-9) var(--space-10);
-}
-
-@media (min-width: 992px) {
-  .hero__inner {
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: var(--space-10);
-    min-height: 78vh;
-  }
-}
-
-.hero__title {
-  font-size: clamp(2.6rem, 1.5rem + 4.4vw, 4.25rem);
-  letter-spacing: -0.025em;
-  line-height: 1.04;
-}
-
-.hero__subtitle {
-  margin-top: var(--space-5);
-  font-family: var(--font-display);
-  font-size: clamp(1.3rem, 1.1rem + 0.9vw, 1.8rem);
-  font-weight: 500;
-  font-style: italic;
-  color: var(--primary);
-  letter-spacing: 0.01em;
-}
-
-.hero__tags {
-  margin-top: var(--space-4);
-  font-family: var(--font-sans);
-  font-size: var(--size-caption);
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gold-text);
-}
-
-.hero__intro {
-  margin-top: var(--space-6);
-  max-width: 52ch;
-  font-size: var(--size-lead);
-  color: var(--muted);
-  line-height: 1.65;
-}
-
-.hero__actions {
-  margin-top: var(--space-7);
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-4);
-}
-
-.hero__media {
-  position: relative;
-  justify-self: center;
-  width: 100%;
-  max-width: 440px;
-}
-
-.hero__portrait {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  box-shadow: var(--shadow-md);
-}
-
-.hero__portrait img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.hero__portrait::after {
-  content: "";
-  position: absolute;
-  inset: 10px;
-  border: 1px solid color-mix(in srgb, var(--gold-light) 55%, transparent);
-  border-radius: 2px;
-  pointer-events: none;
-}
-
-.hero__caption {
-  margin-top: var(--space-4);
-  text-align: center;
-  font-family: var(--font-sans);
-  font-size: var(--size-caption);
-  color: var(--muted);
 }
 
 /* -------------------- Page hero -------------------- */

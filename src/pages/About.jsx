@@ -7,7 +7,7 @@ import PageHero from "../components/PageHero.jsx";
 import SectionHeading from "../components/SectionHeading.jsx";
 import Button from "../components/Button.jsx";
 import ResponsiveImage from "../components/ResponsiveImage.jsx";
-import { SITE } from "../config/site.js";
+import { SITE, publicUrl } from "../config/site.js";
 import "../styles/about.css";
 
 export default function About() {
@@ -25,17 +25,16 @@ export default function About() {
       {/* Intro with portrait and lead */}
       <section className="section about-intro">
         <div className="container split split--media-first">
-          <ResponsiveImage
-            base="/images/fr-ligeza/father-kaz-portrait"
-            widths={[640, 960, 1440]}
-            fallbackWidth={960}
-            width={1920}
-            height={2890}
-            sizes="(min-width: 992px) 420px, 90vw"
-            alt="Portrait of Rev. Kazimierz Ligęza, PhD, in a black clerical suit and Roman collar"
-            className="about-portrait"
-            loading="eager"
-          />
+          <figure className="about-lamb">
+            <img
+              src={publicUrl("/images/fr-ligeza/father-kaz.jpg")}
+              alt="Father Kaz holding a lamb around his shoulders"
+              width="919"
+              height="690"
+              loading="eager"
+            />
+            <figcaption>Father Kaz with a lamb.</figcaption>
+          </figure>
           <div className="prose">
             <p className="lead">
               Father Kazimierz Ligęza, PhD, is a priest of the Diocese of Tarnów, Poland; exercised pastoral ministry in the United States from 2005, when he began as the associate pastor of a parish in Gainesville, Florida, to 2018. He possesses an academic concentration in liturgy, specializing in homiletics, theology of liturgy, and social teaching of the Church. He has authored books and articles covering a wide variety of topics in the Catholic Church.
@@ -53,7 +52,7 @@ export default function About() {
           />
           <div className="prose">
             <p>
-              Father Kaz was formed for the priesthood in his native Poland and ordained a priest of the Diocese of Tarnów in 1990. He later moved to the United States, where he accompanied parishes and communities across cultures, providing sacramental, preaching, and teaching support.
+              Father Kaz was formed for the priesthood in his native Poland and ordained a priest of the Diocese of Tarnów on 2 June 1990. He later moved to the United States, where he accompanied parishes and communities across cultures, providing sacramental, preaching, and teaching support.
             </p>
           </div>
         </div>
@@ -77,11 +76,9 @@ export default function About() {
           </figure>
           <div className="prose">
             <p>
-              Ordained a priest of the Diocese of Tarnów in 1990, he has centered his
-              priestly life on the sacraments and the pastoral care of the faithful.
-            </p>
-            <p className="verification-note">
-              Exact ordination date: <span>[ORDINATION DATE — VERIFICATION REQUIRED]</span>
+              Ordained a priest of the Diocese of Tarnów on 2 June 1990, he has
+              centered his priestly life on the sacraments and the pastoral care of
+              the faithful.
             </p>
           </div>
         </div>
@@ -166,7 +163,7 @@ export default function About() {
               <span className="timeline-event">Born (verified by the publisher's author record).</span>
             </li>
             <li>
-              <span className="timeline-date">1990</span>
+              <span className="timeline-date">2 June 1990</span>
               <span className="timeline-event">Ordained a priest of the Diocese of Tarnów.</span>
             </li>
             <li>

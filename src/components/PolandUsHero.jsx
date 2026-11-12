@@ -55,12 +55,6 @@ export default function PolandUsHero() {
           <span className="eyebrow">From Poland to the United States</span>
           <h1 className="hero__title">Rev. Kazimierz Ligęza, PhD</h1>
           <p className="hero__tags">Priest · Author · Scholar</p>
-          <p className="hero__intro">
-            A Roman Catholic priest of the Diocese of Tarnów, Poland, ordained in
-            1990. He served parishes in the United States from 2005 to 2018, and
-            writes and teaches on liturgy, preaching, and the Church's social
-            teaching.
-          </p>
           <div className="hero__actions">
             <Button to="/about" variant="primary" size="lg">
               About Father Kaz

@@ -8,8 +8,8 @@
 
 export const CONTENT_NOTES = {
   ordinationExactDate: {
-    status: "year verified; exact day/month outstanding",
-    note: "Multiple sources (Wydawnictwo Petrus author page; Bobowa parish list) state that Fr. Kazimierz Ligęza was ordained in 1990. His first recorded appointment was as vicar of Szczepanów from 27 August 1990. The exact ordination day and month are still [ORDINATION DATE — VERIFICATION REQUIRED].",
+    status: "verified — 2 June 1990",
+    note: "Fr. Kazimierz Ligęza was ordained a priest of the Diocese of Tarnów on 2 June 1990, as confirmed by the site owner. His first recorded appointment was as vicar of Szczepanów from 27 August 1990.",
   },
   liturgicalPhotography: {
     status: "supplied",

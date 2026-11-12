@@ -35,7 +35,7 @@ export default function Ministry() {
           <SectionHeading title="Priesthood and sacramental ministry" />
           <div className="prose">
             <p>
-              He was formed for the priesthood in the Diocese of Tarnów, Poland, and was ordained in 1990. His priestly life is centered on the celebration of the sacraments and the pastoral care of the faithful.
+              He was formed for the priesthood in the Diocese of Tarnów, Poland, and was ordained on 2 June 1990. His priestly life is centered on the celebration of the sacraments and the pastoral care of the faithful.
             </p>
           </div>
         </div>

@@ -45,7 +45,7 @@ export const SITE = {
    * no invented dates, institutions, awards, or positions.
    */
   description:
-    "Rev. Kazimierz Ligęza, PhD — Father Kaz — is a Roman Catholic priest of the Diocese of Tarnów, Poland, ordained in 1990. A homilist, author, and scholar, he has served parishes in the United States and writes on liturgy, homiletics, the theology of liturgy, and Catholic social teaching.",
+    "Rev. Kazimierz Ligęza, PhD — Father Kaz — is a Roman Catholic priest of the Diocese of Tarnów, Poland, ordained on 2 June 1990. A homilist, author, and scholar, he has served parishes in the United States and writes on liturgy, homiletics, the theology of liturgy, and Catholic social teaching.",
   /** Topics for structured data (schema.org knowsAbout). */
   knowsAbout: [
     "Liturgy",
@@ -106,7 +106,7 @@ export const PAGE_META = {
   "/about": {
     title: "About Father Kaz",
     description:
-      "The life and ministry of Rev. Kazimierz Ligęza, PhD — a Roman Catholic priest of the Diocese of Tarnów, Poland, ordained in 1990, who served parishes in the United States from 2005 to 2018.",
+      "The life and ministry of Rev. Kazimierz Ligęza, PhD — a Roman Catholic priest of the Diocese of Tarnów, Poland, ordained on 2 June 1990, who served parishes in the United States from 2005 to 2018.",
   },
   "/academic-work": {
     title: "Academic Work",

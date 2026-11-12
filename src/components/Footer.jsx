@@ -16,9 +16,9 @@ export default function Footer() {
             <p className="site-footer__brand-name">{SITE.publicName}</p>
             <p className="site-footer__brand-role">{SITE.formalName}</p>
             <p className="site-footer__blurb">
-              A Roman Catholic priest of the Diocese of Tarnów, Poland, ordained in
-              1990. Writing and preaching on liturgy, homiletics, the theology of
-              liturgy, and Catholic social teaching.
+              A Roman Catholic priest of the Diocese of Tarnów, Poland, ordained on
+              2 June 1990. Writing and preaching on liturgy, homiletics, the theology
+              of liturgy, and Catholic social teaching.
             </p>
           </div>
 

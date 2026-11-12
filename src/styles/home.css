@@ -1,10 +1,10 @@
-/* src/styles/home.css — homepage composition */
+/* src/styles/home.css — the landing page is the hero */
 
-/* ---------------------------------------------------------------
-   Hero: Poland + United States + centered portrait
-   --------------------------------------------------------------- */
 .hero--home {
   position: relative;
+  display: flex;
+  align-items: center;
+  min-height: calc(100dvh - 76px);
   overflow: hidden;
   background:
     radial-gradient(80% 60% at 50% 0%, color-mix(in srgb, var(--gold) 10%, transparent), transparent 70%),
@@ -12,15 +12,18 @@
   border-bottom: 1px solid var(--border);
 }
 
+.hero--home .container {
+  width: 100%;
+}
+
 .hero__atlas {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 540px;
+  min-height: clamp(380px, 50vh, 470px);
   max-width: 1040px;
   margin-inline: auto;
-  padding-top: var(--space-8);
 }
 
 .hero__map {
@@ -67,7 +70,7 @@
 .hero__portrait-frame {
   position: relative;
   z-index: 2;
-  width: clamp(220px, 27vw, 340px);
+  width: clamp(190px, 21vw, 290px);
   aspect-ratio: 2 / 3;
   overflow: hidden;
   border-radius: 999px 999px var(--radius-lg) var(--radius-lg);
@@ -100,13 +103,13 @@
 .hero__content {
   max-width: 760px;
   margin-inline: auto;
-  padding-block: var(--space-8) var(--space-10);
+  padding-block: var(--space-5) var(--space-7);
   text-align: center;
 }
 
 .hero__content .eyebrow {
   display: block;
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-3);
 }
 
 .hero__title {
@@ -125,215 +128,14 @@
   color: var(--gold-text);
 }
 
-.hero__intro {
-  margin: var(--space-6) auto 0;
-  max-width: 58ch;
-  font-size: var(--size-lead);
-  line-height: 1.65;
-  color: var(--muted);
-}
-
 .hero__actions {
-  margin-top: var(--space-7);
+  margin-top: var(--space-6);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: var(--space-4);
 }
 
-/* ---------------------------------------------------------------
-   About preview
-   --------------------------------------------------------------- */
-.home-about {
-  display: grid;
-  gap: var(--space-8);
-  align-items: start;
-}
-
-@media (min-width: 992px) {
-  .home-about {
-    grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
-    gap: var(--space-10);
-  }
-}
-
-.home-about__text .btn-group {
-  margin-top: var(--space-6);
-}
-
-.home-about__panel {
-  border: 0;
-  border-top: 2px solid var(--gold);
-  background: transparent;
-  padding: var(--space-5) 0 0;
-  border-radius: 0;
-  box-shadow: none;
-}
-
-.home-about__panel-eyebrow {
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  color: var(--gold-text);
-}
-
-.home-about__facts {
-  margin-top: var(--space-5);
-  display: grid;
-  gap: var(--space-4);
-}
-
-.home-about__facts > div {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--space-4);
-  padding-bottom: var(--space-3);
-  border-bottom: 1px solid var(--border);
-}
-
-.home-about__facts > div:last-child {
-  border-bottom: 0;
-  padding-bottom: 0;
-}
-
-.home-about__facts dt {
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: var(--muted);
-}
-
-.home-about__facts dd {
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--primary);
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-.home-about__panel-note {
-  margin-top: var(--space-5);
-  font-size: var(--size-small);
-  line-height: 1.65;
-  color: var(--muted);
-}
-
-/* ---------------------------------------------------------------
-   Three callings
-   --------------------------------------------------------------- */
-.callings {
-  display: grid;
-  gap: 0;
-  border-top: 1px solid var(--border);
-}
-
-@media (min-width: 768px) {
-  .callings {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.calling {
-  background: transparent;
-  padding: var(--space-7) var(--space-6);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-3);
-  border-left: 1px solid var(--border);
-}
-
-.calling:first-child {
-  border-left: 0;
-  padding-left: 0;
-}
-
-@media (max-width: 767px) {
-  .calling {
-    border-left: 0;
-    border-top: 1px solid var(--border);
-    padding: var(--space-6) 0;
-  }
-
-  .calling:first-child {
-    border-top: 0;
-    padding-top: var(--space-6);
-  }
-}
-
-.calling__title {
-  font-size: var(--size-h3);
-}
-
-.calling__body {
-  color: var(--muted);
-  font-size: var(--size-small);
-  line-height: 1.65;
-  margin-bottom: var(--space-2);
-}
-
-.home-section-actions {
-  margin-top: var(--space-7);
-}
-
-/* ---------------------------------------------------------------
-   Service band
-   --------------------------------------------------------------- */
-.service-band {
-  display: grid;
-  gap: var(--space-8);
-  align-items: center;
-}
-
-@media (min-width: 992px) {
-  .service-band {
-    grid-template-columns: 1fr 0.8fr;
-    gap: var(--space-10);
-  }
-}
-
-.section--ink .prose,
-.section--ink .prose p,
-.section--ink .lead,
-.section--ink .section-head p {
-  color: color-mix(in srgb, var(--bg) 82%, transparent);
-}
-
-.section--ink .prose a,
-.section--ink .link {
-  color: var(--gold-light);
-}
-
-.service-band .service__note {
-  background: transparent;
-  border-left-color: var(--gold-light);
-  color: color-mix(in srgb, var(--bg) 74%, transparent);
-}
-
-.service-band__quote {
-  margin: 0;
-  padding: var(--space-8) var(--space-6);
-  border: 1px solid color-mix(in srgb, var(--gold-light) 35%, transparent);
-  border-radius: var(--radius-lg);
-  text-align: center;
-}
-
-.service-band__quote .quote__text {
-  color: var(--bg);
-  font-size: clamp(1.6rem, 1.3rem + 1.4vw, 2.3rem);
-}
-
-.service-band__quote .quote__cite {
-  color: var(--gold-light);
-}
-
-/* ---------------------------------------------------------------
-   Responsive hero
-   --------------------------------------------------------------- */
 @media (max-width: 767px) {
   .hero__atlas {
     min-height: 430px;
@@ -371,14 +173,6 @@
   }
 }
 
-@media (max-width: 360px) {
-  /* At the narrowest width the two visible labels collide with the portrait.
-     The hero eyebrow already names both countries. */
-  .hero__map-label {
-    display: none;
-  }
-}
-
 @media (max-width: 480px) {
   .hero__atlas {
     min-height: 360px;
@@ -401,5 +195,13 @@
   .hero__map-label {
     font-size: 0.5625rem;
     letter-spacing: 0.12em;
+  }
+}
+
+@media (max-width: 360px) {
+  /* The two labels collide with the portrait at the narrowest width; the
+     hero eyebrow already names both countries. */
+  .hero__map-label {
+    display: none;
   }
 }

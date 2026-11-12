@@ -60,6 +60,11 @@ thin gold rule. On mobile the composition stacks/simplifies but keeps both
 countries and the portrait. The handwritten sketch is a design reference only
 and never appears on the site.
 
+The landing page is intentionally hero-only: maps, portrait, identity, and the
+two destinations. No content sections follow in the first view. The About intro
+uses the supplied lamb photograph (`father-kaz.jpg`); the formal portrait remains
+the homepage identity.
+
 ## Motion / interaction
 - Tokens: `--duration-fast: 150ms`, `--duration-base: 200ms`,
   `--duration-slow: 260ms`; `--ease-out` for entrances, `--ease-in-out` for moves.
