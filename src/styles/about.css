@@ -45,6 +45,44 @@
   color: var(--muted);
 }
 
+/* Image + text side by side for the Priesthood and U.S. ministry sections. */
+.about-split {
+  display: grid;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.about-split .image-figure {
+  margin: 0;
+  text-align: left;
+}
+
+.about-split .image-figure img {
+  max-width: none;
+  margin-inline: 0;
+}
+
+.about-split__text {
+  max-width: var(--content-width);
+}
+
+@media (min-width: 992px) {
+  .about-split {
+    grid-template-columns: minmax(280px, 420px) minmax(0, 1fr);
+    gap: var(--space-10);
+  }
+
+  .about-split--reverse {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+  }
+}
+
+@media (max-width: 991px) {
+  .about-split--reverse .about-split__media {
+    order: -1;
+  }
+}
+
 /* Timeline */
 /* Higher specificity than the global `ol[class] { padding: 0 }` reset. */
 main ol.timeline {
@@ -77,7 +115,7 @@ main ol.timeline {
 .timeline li::before {
   content: "";
   position: absolute;
-  left: calc(-1 * var(--space-8) + var(--space-4) - 5px);
+  left: calc(-1 * var(--space-8) + var(--space-4) - 3px);
   top: 0.2em;
   width: 10px;
   height: 10px;

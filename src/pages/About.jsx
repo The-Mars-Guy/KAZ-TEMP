@@ -62,24 +62,26 @@ export default function About() {
       <section className="section">
         <div className="container">
           <SectionHeading title="Priesthood" />
-          <figure className="image-figure">
-            <ResponsiveImage
-              base="/images/fr-ligeza/father-kaz-vestments"
-              widths={[640, 960]}
-              fallbackWidth={960}
-              width={1024}
-              height={1536}
-              sizes="(min-width: 992px) 420px, 90vw"
-              alt="Father Kaz in liturgical vestments inside a church"
-            />
-            <figcaption>Father Kaz in liturgical vestments.</figcaption>
-          </figure>
-          <div className="prose">
-            <p>
-              Ordained a priest of the Diocese of Tarnów on 2 June 1990, he has
-              centered his priestly life on the sacraments and the pastoral care of
-              the faithful.
-            </p>
+          <div className="about-split">
+            <figure className="image-figure about-split__media">
+              <ResponsiveImage
+                base="/images/fr-ligeza/father-kaz-vestments"
+                widths={[640, 960]}
+                fallbackWidth={960}
+                width={1024}
+                height={1536}
+                sizes="(min-width: 992px) 420px, 90vw"
+                alt="Father Kaz in liturgical vestments inside a church"
+              />
+              <figcaption>Father Kaz in liturgical vestments.</figcaption>
+            </figure>
+            <div className="prose about-split__text">
+              <p>
+                Ordained a priest of the Diocese of Tarnów on 2 June 1990, he has
+                centered his priestly life on the sacraments and the pastoral care of
+                the faithful.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -88,22 +90,24 @@ export default function About() {
       <section className="section">
         <div className="container">
           <SectionHeading title="Ministry in the United States" />
-          <figure className="image-figure">
-            <ResponsiveImage
-              base="/images/fr-ligeza/priests-red-vestments"
-              widths={[640, 960, 1440]}
-              fallbackWidth={960}
-              width={1536}
-              height={1152}
-              sizes="(min-width: 992px) 560px, 90vw"
-              alt="Two priests in red vestments standing before a religious image"
-            />
-            <figcaption>Two priests in red vestments before a religious image.</figcaption>
-          </figure>
-          <div className="prose">
-            <p>
-              From 2005 to 2018, Father Kaz exercised his pastoral ministry in the United States, beginning as the associate pastor of a parish in Gainesville, Florida. He accompanied parishes and communities through the sacraments, preaching, and teaching.
-            </p>
+          <div className="about-split about-split--reverse">
+            <div className="prose about-split__text">
+              <p>
+                From 2005 to 2018, Father Kaz exercised his pastoral ministry in the United States, beginning as the associate pastor of a parish in Gainesville, Florida. He accompanied parishes and communities through the sacraments, preaching, and teaching.
+              </p>
+            </div>
+            <figure className="image-figure about-split__media">
+              <ResponsiveImage
+                base="/images/fr-ligeza/priests-red-vestments"
+                widths={[640, 960, 1440]}
+                fallbackWidth={960}
+                width={1536}
+                height={1152}
+                sizes="(min-width: 992px) 420px, 90vw"
+                alt="Two priests in red vestments standing before a religious image"
+              />
+              <figcaption>Two priests in red vestments before a religious image.</figcaption>
+            </figure>
           </div>
         </div>
       </section>
